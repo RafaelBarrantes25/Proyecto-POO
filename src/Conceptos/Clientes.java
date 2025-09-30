@@ -8,18 +8,18 @@ package Conceptos;
  *
  * @author Rafael
  */
-public class Cliente {
+public class Clientes {
         String nombre;
         String placa;
         String telefono;
 
-    public Cliente(String nombre, String placa, String telefono) {
+    public Clientes(String nombre, String placa, String telefono) {
         this.nombre = nombre;
         this.placa = placa;
         this.telefono = telefono;
     }
     
-    public Cliente(){
+    public Clientes(){
         
     }
 

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
-import Conceptos.Cliente;
+import Conceptos.Clientes;
 import java.util.ArrayList;
 import java.util.Stack;
 import org.xml.sax.Attributes;
@@ -14,7 +14,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * * @author Rafael
  * */
 public class ClienteParserHandler extends DefaultHandler {
-    ArrayList<Cliente> clientes = new ArrayList<>();
+    ArrayList<Clientes> clientes = new ArrayList<>();
     Stack pilaElementos = new Stack();
     Stack pilaObjetos = new Stack();
     
@@ -34,7 +34,7 @@ public void startElement(String uri, String localName, String qName, Attributes 
     this.pilaElementos.push(qName);
 
     if ("cliente".equals(qName)){
-        Cliente cliente = new Cliente();
+        Clientes cliente = new Clientes();
         this.pilaObjetos.push(cliente);
     }
 }
@@ -45,7 +45,7 @@ public void endElement(String uri, String localName, String qName) throws SAXExc
     this.pilaElementos.pop();
 
     if ("cliente".equals(qName)) {
-        Cliente cliente = (Cliente)this.pilaObjetos.pop();
+        Clientes cliente = (Clientes)this.pilaObjetos.pop();
         this.clientes.add(cliente);
     }
 }
@@ -63,13 +63,13 @@ public void characters(char[] ch, int start, int length) throws SAXException
 
     /* Saca los valores del XML y los asigna al objeto cliente*/
     if ("nombre".equals(elementoActual())) {
-    Cliente cliente = (Cliente)this.pilaObjetos.peek();
+    Clientes cliente = (Clientes)this.pilaObjetos.peek();
     cliente.setNombre(valor);
     } else if ("placa".equals(elementoActual())) {
-        Cliente cliente = (Cliente)this.pilaObjetos.peek();
+        Clientes cliente = (Clientes)this.pilaObjetos.peek();
         cliente.setPlaca(valor);
     } else if ("telefono".equals(elementoActual())) {
-        Cliente cliente = (Cliente)this.pilaObjetos.peek();
+        Clientes cliente = (Clientes)this.pilaObjetos.peek();
         cliente.setTelefono(valor);
     }
     

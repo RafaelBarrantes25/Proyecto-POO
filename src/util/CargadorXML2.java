@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
-import Conceptos.Cliente;
+import Conceptos.Clientes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.xml.sax.XMLReader;
  */
 public class CargadorXML2 {
     public static ArrayList Cargar(InputStream archivo) {
-    ArrayList<Cliente> clientes = new ArrayList<>();
+    ArrayList<Clientes> clientes = new ArrayList<>();
 
     try {
         InputSource source = new InputSource(archivo);

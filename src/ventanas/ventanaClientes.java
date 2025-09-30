@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package ventanas;
-import Conceptos.Cliente;
+import Conceptos.Clientes;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,16 +27,16 @@ public class ventanaClientes extends javax.swing.JDialog {
 
     private void llenarTabla(){
         System.out.println("Ejemplo 1\n");
-        ArrayList<Cliente> clientes;
+        ArrayList<Clientes> clientes;
         
         clientes = util.CargadorXML.Cargar("clientes.xml");
-        for(Cliente c: clientes){
+        for(Clientes c: clientes){
             System.out.println(c);
         }
         System.out.println("");
         System.out.println("Ejemplo 2:\n");
         try {
-        ArrayList<Cliente> clientes2;
+        ArrayList<Clientes> clientes2;
         File xmlFile = new File("clientes.xml");
         clientes = util.CargadorXML2.Cargar(new FileInputStream(xmlFile));
         Vector<String> columnas = new Vector<String>();
@@ -49,7 +49,7 @@ public class ventanaClientes extends javax.swing.JDialog {
         //Filas de la tabla
         Vector<Vector> filas = new Vector<Vector>();
         
-        for (Cliente c : clientes){
+        for (Clientes c : clientes){
             Vector<String> fila = new Vector<String>();
             fila.addElement(c.getNombre());
             fila.addElement(c.getTelefono());

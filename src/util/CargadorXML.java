@@ -4,7 +4,7 @@
  */
 package util;
 
-import Conceptos.Cliente;
+import Conceptos.Clientes;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -25,8 +25,8 @@ public class CargadorXML {
         return nodo.getNodeValue();
     }
 
-    public static ArrayList<Cliente> Cargar(String nombreXML) {
-        ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Clientes> Cargar(String nombreXML) {
+        ArrayList<Clientes> clientes = new ArrayList<>();
 
         try {
             File archivo = new File(nombreXML);
@@ -44,7 +44,7 @@ public class CargadorXML {
                     String nombre = getValue("nombre",elemento);
                     String placa = getValue("placa",elemento);
                     String telefono = getValue("telefono",elemento);
-                    Cliente cliente = new Cliente(nombre,placa,telefono);
+                    Clientes cliente = new Clientes(nombre,placa,telefono);
                     clientes.add(cliente);
                 }
             }
