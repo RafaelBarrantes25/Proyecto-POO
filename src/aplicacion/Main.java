@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import ventanas.Escritorio;
 /**
  *
- * @author Rafael B
+ * @author Rafael
  */
 public class Main {
 
