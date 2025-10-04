@@ -4,23 +4,30 @@
  */
 package Conceptos;
 
+import java.util.ArrayList;
+
 /**
- *
+ * Clase Mecánicos con atributos y métodos
  * @author Rafael
+ * Carné: 
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
 */ 
 public class Mecanicos {
         String identificacion;
         String nombre;
         String puesto;
+        ArrayList<Servicios> servicios;
 
-    public Mecanicos(String nombre, String placa, String telefono) {
-        this.identificacion = nombre;
-        this.nombre = placa;
-        this.puesto = telefono;
+    public Mecanicos(String identificacion, String nombre, String puesto) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+        this.puesto = puesto;
+        this.servicios = new ArrayList<Servicios>();
     }
     
     public Mecanicos(){
-        
+        this.servicios = new ArrayList<Servicios>();
     }
 
     public String getIdentificacion() {
@@ -49,7 +56,7 @@ public class Mecanicos {
     
     @Override
     public String toString(){
-        return "Cliente: "+this.getIdentificacion()+"Tel: "+this.getPuesto()+"Placa: "+this.getNombre();
+        return "Identificacion: "+this.getIdentificacion()+"Nombre: "+this.getNombre()+"Puesto: "+this.getPuesto();
     }
         
 }

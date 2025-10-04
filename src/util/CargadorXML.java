@@ -41,10 +41,12 @@ public class CargadorXML {
                 Node nodo = nodos.item(k);
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element elemento = (Element)nodo;
+                    //String id = ;
                     String nombre = getValue("nombre",elemento);
                     String placa = getValue("placa",elemento);
                     String telefono = getValue("telefono",elemento);
-                    Clientes cliente = new Clientes(nombre,placa,telefono);
+                    String email = getValue("email",elemento);
+                    Clientes cliente = new Clientes("Error: No sé como obtener el id",nombre,placa,telefono,email);
                     clientes.add(cliente);
                 }
             }

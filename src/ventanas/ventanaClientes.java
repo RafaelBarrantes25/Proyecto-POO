@@ -11,8 +11,11 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 /**
- *
+ * Ventana con una tabla de los clientes del establecimiento
  * @author Rafael
+ * Carné: 
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
  */
 public class ventanaClientes extends javax.swing.JDialog {
 
@@ -29,39 +32,49 @@ public class ventanaClientes extends javax.swing.JDialog {
         System.out.println("Ejemplo 1\n");
         ArrayList<Clientes> clientes;
         
-        clientes = util.CargadorXML.Cargar("clientes.xml");
+        /*clientes = util.CargadorXML.Cargar("clientes.xml");
         for(Clientes c: clientes){
             System.out.println(c);
         }
         System.out.println("");
-        System.out.println("Ejemplo 2:\n");
+        System.out.println("Ejemplo 2:\n");*/
         try {
-        ArrayList<Clientes> clientes2;
-        File xmlFile = new File("clientes.xml");
-        clientes = util.CargadorXML2.Cargar(new FileInputStream(xmlFile));
-        Vector<String> columnas = new Vector<String>();
-        
-        //Columnas de la tabla
-        columnas.addElement("Nombre");
-        columnas.addElement("Teléfono");
-        columnas.addElement("Placa");
+            /*File xmlFile = new File("Data/clientes.xml");
+            clientes = util.CargadorXML2.Cargar(new FileInputStream(xmlFile));*/
+            clientes = util.CargadorXML.Cargar("Data/clientes.xml");
             
-        //Filas de la tabla
-        Vector<Vector> filas = new Vector<Vector>();
+            //Columnas de la tabla
+            Vector<String> columnas = new Vector<String>();
         
-        for (Clientes c : clientes){
-            Vector<String> fila = new Vector<String>();
-            fila.addElement(c.getNombre());
-            fila.addElement(c.getTelefono());
-            fila.addElement(c.getPlaca());
+            columnas.addElement("ID");
+            columnas.addElement("Nombre");
+            columnas.addElement("Teléfono");
+            columnas.addElement("Placa");
+            columnas.addElement("Email");
             
-            filas.addElement(fila);
+            //Filas de la tabla
+            Vector<Vector> filas = new Vector<Vector>();
+        
+            for (Clientes c : clientes){
+                System.out.println(c.toString());
+                Vector<String> fila = new Vector<String>();
+                fila.addElement(c.getId());
+                fila.addElement(c.getNombre());
+                fila.addElement(c.getTelefono());
+                fila.addElement(c.getPlaca());
+                fila.addElement(c.getEmail());
+            
+                filas.addElement(fila);
+            }
+            DefaultTableModel datos = new DefaultTableModel(filas,columnas);
+            this.jTable1.setModel(datos);
+
+        }/*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        
+        }*/finally{
+            
         }
-        DefaultTableModel datos = new DefaultTableModel(filas,columnas);
-        this.jTable1.setModel(datos);
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    }
 
     }
     

@@ -5,18 +5,21 @@
 package Conceptos;
 
 /**
- *
+ * Clase Servicios con atributos y métodos
  * @author Rafael
+ * Carné: 
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
  */
 public class Servicios {
         String identificacion;
         String nombre;
         String precio;
 
-    public Servicios(String nombre, String placa, String telefono) {
-        this.identificacion = nombre;
-        this.nombre = placa;
-        this.precio = telefono;
+    public Servicios(String identificacion, String nombre, String precio) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+        this.precio = precio;
     }
     
     public Servicios(){
@@ -49,7 +52,7 @@ public class Servicios {
     
     @Override
     public String toString(){
-        return "Cliente: "+this.getIdentificacion()+"Tel: "+this.getPrecio()+"Placa: "+this.getNombre();
+        return "Identificacion: "+this.getIdentificacion()+"Servicio: "+this.getNombre()+"Precio: "+this.getPrecio();
     }
         
 }

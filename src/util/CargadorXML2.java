@@ -19,7 +19,7 @@ import org.xml.sax.XMLReader;
  */
 public class CargadorXML2 {
     public static ArrayList Cargar(InputStream archivo) {
-    ArrayList<Clientes> clientes = new ArrayList<>();
+    ArrayList<Clientes> clientes = new ArrayList<Clientes>();
 
     try {
         InputSource source = new InputSource(archivo);
