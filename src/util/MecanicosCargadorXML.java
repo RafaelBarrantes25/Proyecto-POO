@@ -4,7 +4,7 @@
  */
 package util;
 
-import Conceptos.Clientes;
+import Conceptos.Mecanicos;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,7 +17,7 @@ import org.w3c.dom.NodeList;
  *
  * @author Rafael
  */
-public class CargadorXML {
+public class MecanicosCargadorXML {
 
     private static String getValue(String etiqueta, Element elemento) {
         NodeList nodos = elemento.getElementsByTagName(etiqueta).item(0).getChildNodes();
@@ -25,8 +25,8 @@ public class CargadorXML {
         return nodo.getNodeValue();
     }
 
-    public static ArrayList<Clientes> Cargar(String nombreXML) {
-        ArrayList<Clientes> clientes = new ArrayList<>();
+    public static ArrayList<Mecanicos> Cargar(String nombreXML) {
+        ArrayList<Mecanicos> mecanicos = new ArrayList<>();
 
         try {
             File archivo = new File(nombreXML);
@@ -41,11 +41,11 @@ public class CargadorXML {
                 Node nodo = nodos.item(k);
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element elemento = (Element)nodo;
+                    String identificacion = getValue("id",elemento);
                     String nombre = getValue("nombre",elemento);
-                    String placa = getValue("placa",elemento);
-                    String telefono = getValue("telefono",elemento);
-                    Clientes cliente = new Clientes(nombre,placa,telefono);
-                    clientes.add(cliente);
+                    String puesto = getValue("puesto",elemento);
+                    Mecanicos mecanico = new Mecanicos(identificacion,nombre,puesto);
+                    mecanicos.add(mecanico);
                 }
             }
         } catch (Exception ex){
@@ -53,7 +53,7 @@ public class CargadorXML {
         }
         
     
-    return clientes;
+    return mecanicos;
     }
 }
 

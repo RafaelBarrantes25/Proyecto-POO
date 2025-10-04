@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
-import Conceptos.Clientes;
+import Conceptos.Mecanicos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -17,14 +17,14 @@ import org.xml.sax.XMLReader;
  *
  * @author Rafael
  */
-public class CargadorXML2 {
+public class MecanicosCargadorXML2 {
     public static ArrayList Cargar(InputStream archivo) {
-    ArrayList<Clientes> clientes = new ArrayList<>();
+    ArrayList<Mecanicos> mecanicos = new ArrayList<>();
 
     try {
         InputSource source = new InputSource(archivo);
 
-        ClienteParserHandler handler = new ClienteParserHandler();
+        MecanicoParserHandler handler = new MecanicoParserHandler();
 
         SAXParserFactory parserFactory = SAXParserFactory.newInstance();
         parserFactory.setNamespaceAware(true);
@@ -35,7 +35,7 @@ public class CargadorXML2 {
         reader.setContentHandler(handler);
         reader.parse(source);
         
-        clientes = handler.getClientes();
+        mecanicos = handler.getMecanicos();
 
         } catch (SAXException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class CargadorXML2 {
 
         }
 
-        return clientes;
+        return mecanicos;
 
 }
 }

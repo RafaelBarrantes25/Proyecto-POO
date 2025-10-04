@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
-import Conceptos.Clientes;
+import Conceptos.Mecanicos;
 import java.util.ArrayList;
 import java.util.Stack;
 import org.xml.sax.Attributes;
@@ -13,8 +13,8 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * * @author Rafael
  * */
-public class ClienteParserHandler extends DefaultHandler {
-    ArrayList<Clientes> clientes = new ArrayList<>();
+public class MecanicoParserHandler extends DefaultHandler {
+    ArrayList<Mecanicos> mecanico = new ArrayList<>();
     Stack pilaElementos = new Stack();
     Stack pilaObjetos = new Stack();
     
@@ -33,9 +33,9 @@ public void startElement(String uri, String localName, String qName, Attributes 
 {
     this.pilaElementos.push(qName);
 
-    if ("cliente".equals(qName)){
-        Clientes cliente = new Clientes();
-        this.pilaObjetos.push(cliente);
+    if ("mecanico".equals(qName)){
+        Mecanicos mecanico = new Mecanicos();
+        this.pilaObjetos.push(mecanico);
     }
 }
 
@@ -44,9 +44,9 @@ public void endElement(String uri, String localName, String qName) throws SAXExc
 {
     this.pilaElementos.pop();
 
-    if ("cliente".equals(qName)) {
-        Clientes cliente = (Clientes)this.pilaObjetos.pop();
-        this.clientes.add(cliente);
+    if ("mecanico".equals(qName)) {
+        Mecanicos mecanico = (Mecanicos)this.pilaObjetos.pop();
+        this.mecanico.add(mecanico);
     }
 }
 
@@ -61,16 +61,16 @@ public void characters(char[] ch, int start, int length) throws SAXException
         return;
     }
 
-    /* Saca los valores del XML y los asigna al objeto cliente*/
-    if ("nombre".equals(elementoActual())) {
-    Clientes cliente = (Clientes)this.pilaObjetos.peek();
-    cliente.setNombre(valor);
-    } else if ("placa".equals(elementoActual())) {
-        Clientes cliente = (Clientes)this.pilaObjetos.peek();
-        cliente.setPlaca(valor);
-    } else if ("telefono".equals(elementoActual())) {
-        Clientes cliente = (Clientes)this.pilaObjetos.peek();
-        cliente.setTelefono(valor);
+    /* Saca los valores del XML y los asigna al objeto mecanico*/
+    if ("identificacion".equals(elementoActual())) {
+    Mecanicos mecanico = (Mecanicos)this.pilaObjetos.peek();
+    mecanico.setIdentificacion(valor);
+    } else if ("nombre".equals(elementoActual())) {
+        Mecanicos mecanico = (Mecanicos)this.pilaObjetos.peek();
+        mecanico.setNombre(valor);
+    } else if ("puesto".equals(elementoActual())) {
+        Mecanicos mecanico = (Mecanicos)this.pilaObjetos.peek();
+        mecanico.setPuesto(valor);
     }
     
     }
@@ -80,9 +80,9 @@ public void characters(char[] ch, int start, int length) throws SAXException
         return (String)this.pilaElementos.peek();
     }
 
-    public ArrayList getClientes()
+    public ArrayList getMecanicos()
     {
-        return clientes;
+        return mecanico;
     }
 
 
