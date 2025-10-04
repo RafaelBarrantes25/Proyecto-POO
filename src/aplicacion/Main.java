@@ -12,8 +12,11 @@ import java.util.ArrayList;
 
 import ventanas.Escritorio;
 /**
- *
+ * Clase main que corre el programa
  * @author Rafael
+ * Carné: 
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
  */
 public class Main {
 
