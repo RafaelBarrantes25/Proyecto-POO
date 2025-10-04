@@ -28,7 +28,7 @@ public class Main {
         Escritorio escritorio = new Escritorio();
         escritorio.setVisible(true);
         
-        
+        //int precio = 100000000000000000;
     }
     
     
