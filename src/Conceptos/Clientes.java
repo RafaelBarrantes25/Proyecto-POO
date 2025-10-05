@@ -6,8 +6,8 @@ package Conceptos;
 
 /**
  * Clase Clientes con atributos y métodos
- * @author Rafael
- * Carné: 
+ * @author Jose Rafael Barrantes Quesada
+ * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
  */

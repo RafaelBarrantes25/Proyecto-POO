@@ -11,8 +11,11 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * * @author Rafael
- * */
+  * @author Jose Rafael Barrantes Quesada
+ * Carné: 2025122443
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
+*/ 
 public class ClienteParserHandler extends DefaultHandler {
     ArrayList<Clientes> clientes = new ArrayList<>();
     Stack pilaElementos = new Stack();

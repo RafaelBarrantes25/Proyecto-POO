@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 /**
- *
- * @author Rafael
- */
+ * @author Jose Rafael Barrantes Quesada
+ * Carné: 2025122443
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
+*/ 
 public class ventanaMecanicos extends javax.swing.JDialog {
 
     /**

@@ -12,16 +12,16 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 /**
  * Ventana con una tabla de los clientes del establecimiento
- * @author Rafael
- * Carné: 
+ * @author Jose Rafael Barrantes Quesada
+ * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
  */
 public class ventanaClientes extends javax.swing.JDialog {
 
-    /**
-     * Creates new form ventanaClientes
-     */
+    
+    ArrayList<Clientes> clientes;
+     
     public ventanaClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -30,18 +30,8 @@ public class ventanaClientes extends javax.swing.JDialog {
     }
 
     private void llenarTabla(){
-        System.out.println("Ejemplo 1\n");
-        ArrayList<Clientes> clientes;
-        
-        /*clientes = util.CargadorXML.Cargar("clientes.xml");
-        for(Clientes c: clientes){
-            System.out.println(c);
-        }
-        System.out.println("");
-        System.out.println("Ejemplo 2:\n");*/
+      
         try {
-            /*File xmlFile = new File("Data/clientes.xml");
-            clientes = util.CargadorXML2.Cargar(new FileInputStream(xmlFile));*/
             clientes = util.CargadorXML.Cargar("Data/clientes.xml");
             
             //Columnas de la tabla
@@ -100,7 +90,7 @@ public class ventanaClientes extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btAnadirCliente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -167,10 +157,10 @@ public class ventanaClientes extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel5.setText("Telefono");
 
-        jButton1.setText("Anadir Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAnadirCliente.setText("Anadir Cliente");
+        btAnadirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAnadirClienteActionPerformed(evt);
             }
         });
 
@@ -218,17 +208,13 @@ public class ventanaClientes extends javax.swing.JDialog {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btAnadirCliente)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButton3)
-                        .addGap(147, 147, 147))))
+                        .addComponent(jButton2)))
+                .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(53, 53, 53)
@@ -258,7 +244,7 @@ public class ventanaClientes extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(85, 85, 85)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
+                                    .addComponent(btAnadirCliente)
                                     .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -314,9 +300,34 @@ public class ventanaClientes extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoTelefonoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    
+   //Para añadir nuevos clientes
+    private void btAnadirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirClienteActionPerformed
+        String id = campoID.getText();
+        String nombre = campoNombre.getText();
+        String placa = campoPlaca.getText();
+        String telefono = campoTelefono.getText();
+        String email = campoEmail.getText();
+        //Crea una ventana de error si no llena todos los campos
+        if (id.isEmpty() || nombre.isEmpty() || placa.isEmpty() || telefono.isEmpty() || email.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
+            //Es importante el return porque si no, igual se crea la fila, solo que vacia
+            return;
+        }
+        
+        Clientes clienteNuevo = new Clientes(id,nombre,placa,telefono,email);
+        clientes.add(clienteNuevo);
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        
+        Vector<String> filaNueva = new Vector<>();
+        filaNueva.add(id);
+        filaNueva.add(nombre);
+        filaNueva.add(telefono);
+        filaNueva.add(placa);
+        filaNueva.add(email);
+        
+        tabla.addRow(filaNueva);
+    }//GEN-LAST:event_btAnadirClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -369,12 +380,12 @@ public class ventanaClientes extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAnadirCliente;
     private java.awt.TextField campoEmail;
     private java.awt.TextField campoID;
     private java.awt.TextField campoNombre;
     private java.awt.TextField campoPlaca;
     private java.awt.TextField campoTelefono;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
