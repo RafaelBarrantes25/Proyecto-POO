@@ -36,6 +36,10 @@ public void startElement(String uri, String localName, String qName, Attributes 
     if ("cliente".equals(qName)){
         Clientes cliente = new Clientes();
         this.pilaObjetos.push(cliente);
+    
+        String id = attributes.getValue("id");
+        cliente.setId(id);
+        this.pilaObjetos.push(cliente);
     }
 }
 
