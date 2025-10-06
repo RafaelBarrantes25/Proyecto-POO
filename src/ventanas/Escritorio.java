@@ -44,12 +44,10 @@ public class Escritorio extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setMaximumSize(new java.awt.Dimension(1024, 768));
         setMinimumSize(new java.awt.Dimension(1024, 768));
-        setPreferredSize(new java.awt.Dimension(1024, 768));
 
         botonMecanicos.setBackground(new java.awt.Color(255, 255, 255));
         botonMecanicos.setForeground(new java.awt.Color(0, 0, 0));
         botonMecanicos.setText("Mecanicos");
-        botonMecanicos.setActionCommand("Mecanicos");
         botonMecanicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMecanicosActionPerformed(evt);
@@ -115,8 +113,6 @@ public class Escritorio extends javax.swing.JFrame {
                 .addComponent(textoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(292, 292, 292))
         );
-
-        botonMecanicos.getAccessibleContext().setAccessibleName("Mecanicos");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

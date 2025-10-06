@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ventanaMecanicos extends javax.swing.JDialog {
 
     
-    ArrayList<Mecanicos> clientes;
+    ArrayList<Mecanicos> mecanicos;
      
     public ventanaMecanicos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -31,7 +31,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     private void llenarTabla(){
       
         try {
-            clientes = util.MecanicosCargadorXML.Cargar("Data/mecanicos.xml");
+            mecanicos = util.MecanicosCargadorXML.Cargar("Data/mecanicos.xml");
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -44,7 +44,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Mecanicos m : clientes){
+            for (Mecanicos m : mecanicos){
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(m.getIdentificacion());
                 fila.addElement(m.getNombre());
@@ -80,6 +80,15 @@ public class ventanaMecanicos extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMecanicos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btAnadirMecanico = new javax.swing.JButton();
+        modificarMecanico = new javax.swing.JButton();
+        eliminarMecanico = new javax.swing.JButton();
+        campoPuesto = new java.awt.TextField();
+        campoID = new java.awt.TextField();
+        campoNombre = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,21 +108,229 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         tablaMecanicos.setRowMargin(3);
         jScrollPane1.setViewportView(tablaMecanicos);
 
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel1.setText("ID");
+
+        jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel4.setText("Nombre");
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        jLabel5.setText("Puesto");
+
+        btAnadirMecanico.setText("Anadir Mecanico");
+        btAnadirMecanico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAnadirMecanicoActionPerformed(evt);
+            }
+        });
+
+        modificarMecanico.setText("Modificar");
+        modificarMecanico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarMecanicoActionPerformed(evt);
+            }
+        });
+
+        eliminarMecanico.setText("Eliminar");
+        eliminarMecanico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarMecanicoActionPerformed(evt);
+            }
+        });
+
+        campoPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPuestoActionPerformed(evt);
+            }
+        });
+
+        campoID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoIDActionPerformed(evt);
+            }
+        });
+
+        campoNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(20, 20, 20)
+                                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(239, 239, 239))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btAnadirMecanico)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(eliminarMecanico)
+                        .addComponent(modificarMecanico)))
+                .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 392, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAnadirMecanico)
+                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(modificarMecanico))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel4)
+                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(eliminarMecanico))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btAnadirMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirMecanicoActionPerformed
+        String id = campoID.getText();
+        String nombre = campoNombre.getText();
+        String placa = campoPuesto.getText();
+
+        //Crea una ventana de error si no llena todos los campos
+        if (id.isEmpty() || nombre.isEmpty() || placa.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
+            //Es importante el return porque si no, igual se crea la fila, solo que vacia
+            return;
+        }
+
+        Mecanicos mecanicoNuevo = new Mecanicos(id,nombre,placa);
+        mecanicos.add(mecanicoNuevo);
+        DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+
+        Vector<String> filaNueva = new Vector<>();
+        filaNueva.add(id);
+        filaNueva.add(nombre);
+        filaNueva.add(placa);
+
+        tabla.addRow(filaNueva);
+        //guarda el mecanico nuevo en el xml
+        //guardarMecanico();
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Mecanico añadido.");
+    }//GEN-LAST:event_btAnadirMecanicoActionPerformed
+
+    private void modificarMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMecanicoActionPerformed
+        int filaEscogida = tablaMecanicos.getSelectedRow();
+
+        //Si no escoge una fila
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un mecanico con el mouse");
+            return;
+        }
+
+        Mecanicos mecanicoPorModificar = mecanicos.get(filaEscogida);
+
+        String idNuevo = campoID.getText().trim();
+        String nombreNuevo = campoNombre.getText().trim();
+        String placaNueva = campoPuesto.getText().trim();
+
+
+        if (idNuevo.isEmpty() || nombreNuevo.isEmpty() || placaNueva.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
+            //Es importante el return porque si no, igual se crea la fila, solo que vacia.
+            return;
+        }
+
+        mecanicoPorModificar.setIdentificacion(idNuevo);
+        mecanicoPorModificar.setNombre(nombreNuevo);
+        mecanicoPorModificar.setPuesto(placaNueva);
+
+
+        DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+
+        tabla.setValueAt(idNuevo, filaEscogida, 0);
+        tabla.setValueAt(nombreNuevo, filaEscogida, 1);
+        tabla.setValueAt(placaNueva, filaEscogida, 2);
+
+        //guardarMecanico();
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Mecanico modificado.");
+    }//GEN-LAST:event_modificarMecanicoActionPerformed
+
+    private void eliminarMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMecanicoActionPerformed
+        //Uno puede seleccionar filas con el mouse, entonces elimina
+        //la fila que seleccione
+        int filaEscogida = tablaMecanicos.getSelectedRow();
+
+        //Si no escoge una fila
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un mecanico con el mouse");
+            return;
+        }
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this,
+            "¿Quiere eliminar el mecanico seleccionado?",
+            "Confirmar",
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+            //elimina en el array
+            mecanicos.remove(filaEscogida);
+
+            //elimina en la tabla
+            DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+            tabla.removeRow(filaEscogida);
+
+            //cambia el XML
+            //guardarMecanico();
+            javax.swing.JOptionPane.showMessageDialog(this, "Mecanico eliminado exitosamente.");
+        }
+    }//GEN-LAST:event_eliminarMecanicoActionPerformed
+
+    private void campoPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPuestoActionPerformed
+
+    private void campoIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoIDActionPerformed
+
+    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,7 +376,16 @@ public class ventanaMecanicos extends javax.swing.JDialog {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAnadirMecanico;
+    private java.awt.TextField campoID;
+    private java.awt.TextField campoNombre;
+    private java.awt.TextField campoPuesto;
+    private javax.swing.JButton eliminarMecanico;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificarMecanico;
     private javax.swing.JTable tablaMecanicos;
     // End of variables declaration//GEN-END:variables
 
