@@ -17,17 +17,17 @@ public class Mecanicos {
         String identificacion;
         String nombre;
         String puesto;
-        ArrayList<Servicios> servicios;
+        ArrayList<Servicios> serviciosValidados;
 
     public Mecanicos(String identificacion, String nombre, String puesto) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.puesto = puesto;
-        this.servicios = new ArrayList<Servicios>();
+        this.serviciosValidados = new ArrayList<Servicios>();
     }
     
     public Mecanicos(){
-        this.servicios = new ArrayList<Servicios>();
+        this.serviciosValidados = new ArrayList<Servicios>();
     }
 
     public String getIdentificacion() {

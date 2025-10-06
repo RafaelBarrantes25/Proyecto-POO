@@ -4,9 +4,6 @@
  */
 package ventanas;
 import Conceptos.Clientes;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -25,6 +22,7 @@ public class ventanaClientes extends javax.swing.JDialog {
     public ventanaClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    
         llenarTabla();
         this.setSize(1024,768);
     }
@@ -90,7 +88,7 @@ public class ventanaClientes extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btAnadirCliente = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        modificarCliente = new javax.swing.JButton();
         eliminarClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -163,10 +161,10 @@ public class ventanaClientes extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Modificar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        modificarCliente.setText("Modificar");
+        modificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                modificarClienteActionPerformed(evt);
             }
         });
 
@@ -212,7 +210,7 @@ public class ventanaClientes extends javax.swing.JDialog {
                     .addComponent(btAnadirCliente)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(eliminarClientes)
-                        .addComponent(jButton2)))
+                        .addComponent(modificarCliente)))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -252,7 +250,7 @@ public class ventanaClientes extends javax.swing.JDialog {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(8, 8, 8))
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(modificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
@@ -360,17 +358,56 @@ public class ventanaClientes extends javax.swing.JDialog {
         e.printStackTrace();
         } 
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void modificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarClienteActionPerformed
+        int filaEscogida = jTable1.getSelectedRow();
+        
+        //Si no escoge una fila
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un cliente con el mouse");
+            return;
+        }
+        
+        Clientes clientePorModificar = clientes.get(filaEscogida);
+        
+        String idNuevo = campoID.getText().trim();
+        String nombreNuevo = campoNombre.getText().trim();
+        String placaNueva = campoPlaca.getText().trim();
+        String telefonoNuevo = campoTelefono.getText().trim();
+        String emailNuevo = campoEmail.getText().trim();
+        
+        if (idNuevo.isEmpty() || nombreNuevo.isEmpty() || placaNueva.isEmpty() || telefonoNuevo.isEmpty() || emailNuevo.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
+            //Es importante el return porque si no, igual se crea la fila, solo que vacia.
+            return;
+        }
+        
+        clientePorModificar.setId(idNuevo);
+        clientePorModificar.setNombre(nombreNuevo);
+        clientePorModificar.setPlaca(placaNueva);
+        clientePorModificar.setTelefono(telefonoNuevo);
+        clientePorModificar.setEmail(emailNuevo);
+        
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        
+        tabla.setValueAt(idNuevo, filaEscogida, 0);
+        tabla.setValueAt(nombreNuevo, filaEscogida, 1);
+        tabla.setValueAt(placaNueva, filaEscogida, 2);
+        tabla.setValueAt(telefonoNuevo, filaEscogida, 3);
+        tabla.setValueAt(emailNuevo, filaEscogida, 4);
+        
+        guardarCliente();
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Cliente modificado.");
+    }//GEN-LAST:event_modificarClienteActionPerformed
     
     private void eliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClientesActionPerformed
         //Uno puede seleccionar filas con el mouse, entonces elimina
         //la fila que seleccione
         int filaEscogida = jTable1.getSelectedRow();
         
+        //Si no escoge una fila
         if(filaEscogida == -1){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una fila con el mouse");
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un cliente con el mouse");
             return;
         }
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this, 
@@ -443,7 +480,6 @@ public class ventanaClientes extends javax.swing.JDialog {
     private java.awt.TextField campoPlaca;
     private java.awt.TextField campoTelefono;
     private javax.swing.JButton eliminarClientes;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -451,5 +487,6 @@ public class ventanaClientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton modificarCliente;
     // End of variables declaration//GEN-END:variables
 }
