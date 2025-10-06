@@ -18,6 +18,12 @@ public class Escritorio extends javax.swing.JFrame {
     public Escritorio() {
         initComponents();
         this.setSize(1024,768);
+        
+        setLayout(null);
+        botonClientes.setBounds(80, 240, 144, 144);
+        botonServicios.setBounds(440, 240, 144, 144);
+        botonMecanicos.setBounds(800, 240, 144, 144);
+        textoClientes.setBounds(80, 384, 144, 32);
     }
 
     /**
@@ -29,69 +35,103 @@ public class Escritorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Mecanicos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonMecanicos = new javax.swing.JButton();
+        botonClientes = new javax.swing.JButton();
+        botonServicios = new javax.swing.JButton();
+        textoClientes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new java.awt.Dimension(1024, 768));
 
-        Mecanicos.setText("Clientes");
-        Mecanicos.setActionCommand("Mecanicos");
-        Mecanicos.addActionListener(new java.awt.event.ActionListener() {
+        botonMecanicos.setBackground(new java.awt.Color(255, 255, 255));
+        botonMecanicos.setForeground(new java.awt.Color(0, 0, 0));
+        botonMecanicos.setText("Mecanicos");
+        botonMecanicos.setActionCommand("Mecanicos");
+        botonMecanicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MecanicosActionPerformed(evt);
+                botonMecanicosActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Clientes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonClientes.setBackground(new java.awt.Color(255, 255, 255));
+        botonClientes.setForeground(new java.awt.Color(0, 0, 0));
+        botonClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ventanas/IconoClientes.jpg"))); // NOI18N
+        botonClientes.setText("Clientes");
+        botonClientes.setAlignmentY(0.0F);
+        botonClientes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        botonClientes.setMaximumSize(new java.awt.Dimension(144, 144));
+        botonClientes.setMinimumSize(new java.awt.Dimension(144, 144));
+        botonClientes.setPreferredSize(new java.awt.Dimension(144, 144));
+        botonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonClientesActionPerformed(evt);
             }
         });
+
+        botonServicios.setBackground(new java.awt.Color(255, 255, 255));
+        botonServicios.setForeground(new java.awt.Color(0, 0, 0));
+        botonServicios.setLabel("Servicios");
+
+        textoClientes.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        textoClientes.setForeground(new java.awt.Color(0, 0, 0));
+        textoClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoClientes.setText("Clientes");
+        textoClientes.setToolTipText("");
+        textoClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        textoClientes.setMaximumSize(new java.awt.Dimension(144, 32));
+        textoClientes.setMinimumSize(new java.awt.Dimension(144, 32));
+        textoClientes.setPreferredSize(new java.awt.Dimension(144, 32));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(667, Short.MAX_VALUE)
-                .addComponent(Mecanicos)
-                .addGap(98, 98, 98))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(107, 107, 107)
-                    .addComponent(jButton2)
-                    .addContainerGap(658, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                        .addComponent(botonServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(193, 193, 193)
+                        .addComponent(botonMecanicos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(343, Short.MAX_VALUE)
-                .addComponent(Mecanicos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(344, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(112, 112, 112)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(294, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonMecanicos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(292, 292, 292))
         );
 
-        Mecanicos.getAccessibleContext().setAccessibleName("Mecanicos");
+        botonMecanicos.getAccessibleContext().setAccessibleName("Mecanicos");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MecanicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MecanicosActionPerformed
+    private void botonMecanicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMecanicosActionPerformed
         ventanaMecanicos mecanicos = new ventanaMecanicos(Escritorio.this,true);
         
         mecanicos.setVisible(true);
-    }//GEN-LAST:event_MecanicosActionPerformed
+    }//GEN-LAST:event_botonMecanicosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonClientesActionPerformed
         ventanaClientes clientes = new ventanaClientes(Escritorio.this,true);
         
         clientes.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +169,9 @@ public class Escritorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Mecanicos;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botonClientes;
+    private javax.swing.JButton botonMecanicos;
+    private javax.swing.JButton botonServicios;
+    private javax.swing.JLabel textoClientes;
     // End of variables declaration//GEN-END:variables
 }

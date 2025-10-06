@@ -39,7 +39,7 @@ public class CargadorXML {
 
             NodeList nodos = docXML.getElementsByTagName("cliente");
             
-            for (int k=0; k<nodos.getLength(); k++){
+            for (int k=1; k<nodos.getLength(); k++){
                 Node nodo = nodos.item(k);
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element elemento = (Element)nodo;

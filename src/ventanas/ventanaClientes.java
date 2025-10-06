@@ -47,7 +47,6 @@ public class ventanaClientes extends javax.swing.JDialog {
             Vector<Vector> filas = new Vector<Vector>();
         
             for (Clientes c : clientes){
-                System.out.println(c.toString());
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(c.getId());
                 fila.addElement(c.getNombre());
