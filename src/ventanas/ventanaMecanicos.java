@@ -18,62 +18,56 @@ import javax.swing.table.DefaultTableModel;
 */ 
 public class ventanaMecanicos extends javax.swing.JDialog {
 
-    /**
-     * 
-     */
+    
+    ArrayList<Mecanicos> clientes;
+     
     public ventanaMecanicos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         llenarTabla();
+        this.setSize(1024,768);
     }
 
     private void llenarTabla(){
-        System.out.println("Ejemplo 1\n");
-        ArrayList<Mecanicos> mecanicos;
-        //
-        
-        
-        
-        
-        
-        
-        // hay que solucionar que el cargador acepte mecanicos
-        mecanicos = util.MecanicosCargadorXML.Cargar("mecanicos.xml");
-        for(Mecanicos c: mecanicos){
-            System.out.println(c);
-        }
-        
-        System.out.println("");
-        System.out.println("Ejemplo 2:\n");
+      
         try {
-        ArrayList<Mecanicos> mecanicos2;
-        File xmlFile = new File("mecanicos.xml");
-        mecanicos = util.MecanicosCargadorXML2.Cargar(new FileInputStream(xmlFile));
-        Vector<String> columnas = new Vector<String>();
-        
-        //Columnas de la tabla
-        columnas.addElement("Identificacion");
-        columnas.addElement("Nombre");
-        columnas.addElement("Puesto");
+            clientes = util.MecanicosCargadorXML.Cargar("Data/mecanicos.xml");
             
-        //Filas de la tabla
-        Vector<Vector> filas = new Vector<Vector>();
+            //Columnas de la tabla
+            Vector<String> columnas = new Vector<String>();
         
-        for (Mecanicos c : mecanicos){
-            Vector<String> fila = new Vector<String>();
-            fila.addElement(c.getIdentificacion());
-            fila.addElement(c.getNombre());
-            fila.addElement(c.getPuesto());
+            columnas.addElement("Identificacion");
+            columnas.addElement("Nombre");
+            columnas.addElement("Puesto");
+
             
-            filas.addElement(fila);
+            //Filas de la tabla
+            Vector<Vector> filas = new Vector<Vector>();
+        
+            for (Mecanicos m : clientes){
+                Vector<String> fila = new Vector<String>();
+                fila.addElement(m.getIdentificacion());
+                fila.addElement(m.getNombre());
+                fila.addElement(m.getPuesto());
+            
+                filas.addElement(fila);
+            }
+            DefaultTableModel datos = new DefaultTableModel(filas,columnas);
+            this.tablaMecanicos.setModel(datos);
+
+        }/*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        
+        }*/finally{
+            
         }
-        DefaultTableModel datos = new DefaultTableModel(filas,columnas);
-        this.jTable1.setModel(datos);
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
+
     }
+
         
-    }
+        
+        
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,11 +79,12 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMecanicos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMecanicos.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        tablaMecanicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -100,23 +95,21 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaMecanicos.setRowHeight(50);
+        tablaMecanicos.setRowMargin(3);
+        jScrollPane1.setViewportView(tablaMecanicos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 392, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -163,10 +156,11 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
-    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaMecanicos;
     // End of variables declaration//GEN-END:variables
+
 }

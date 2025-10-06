@@ -22,9 +22,26 @@ import org.w3c.dom.NodeList;
 public class MecanicosCargadorXML {
 
     private static String getValue(String etiqueta, Element elemento) {
-        NodeList nodos = elemento.getElementsByTagName(etiqueta).item(0).getChildNodes();
-        Node nodo = (Node) nodos.item(0);
-        return nodo.getNodeValue();
+        NodeList nodeList = elemento.getElementsByTagName(etiqueta);
+        
+        if (nodeList == null || nodeList.getLength() == 0) {
+            return ""; 
+        }
+        
+        Node etiquetaNode = nodeList.item(0);
+        
+        //manejo de errores
+        if (etiquetaNode != null) {
+            NodeList nodosHijos = etiquetaNode.getChildNodes();
+            if (nodosHijos != null && nodosHijos.getLength() > 0) {
+                Node nodo = nodosHijos.item(0);
+
+                if (nodo != null && nodo.getNodeType() == Node.TEXT_NODE) {
+                    return nodo.getNodeValue().trim(); 
+                }
+            }
+        }
+        return "";
     }
 
     public static ArrayList<Mecanicos> Cargar(String nombreXML) {
@@ -37,13 +54,16 @@ public class MecanicosCargadorXML {
             Document docXML = creador.parse(archivo);
             docXML.getDocumentElement().normalize();
 
-            NodeList nodos = docXML.getElementsByTagName("cliente");
+            NodeList nodos = docXML.getElementsByTagName("mecanico");
             
             for (int k=0; k<nodos.getLength(); k++){
                 Node nodo = nodos.item(k);
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element elemento = (Element)nodo;
-                    String identificacion = getValue("id",elemento);
+                    //Esto me dio mil problemas, es que la id es un
+                    //atributo, por eso se lee distinto
+                    String identificacion = elemento.getAttribute("id"); 
+
                     String nombre = getValue("nombre",elemento);
                     String puesto = getValue("puesto",elemento);
                     Mecanicos mecanico = new Mecanicos(identificacion,nombre,puesto);

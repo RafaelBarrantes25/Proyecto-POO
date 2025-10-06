@@ -91,7 +91,7 @@ public class ventanaClientes extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         btAnadirCliente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        eliminarClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -170,10 +170,10 @@ public class ventanaClientes extends javax.swing.JDialog {
             }
         });
 
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        eliminarClientes.setText("Eliminar");
+        eliminarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                eliminarClientesActionPerformed(evt);
             }
         });
 
@@ -211,7 +211,7 @@ public class ventanaClientes extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btAnadirCliente)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton3)
+                        .addComponent(eliminarClientes)
                         .addComponent(jButton2)))
                 .addContainerGap(156, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,7 +265,7 @@ public class ventanaClientes extends javax.swing.JDialog {
                                 .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)))
+                                .addComponent(eliminarClientes)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -326,15 +326,72 @@ public class ventanaClientes extends javax.swing.JDialog {
         filaNueva.add(email);
         
         tabla.addRow(filaNueva);
+        //guarda el cliente nuevo en el xml
+        guardarCliente();
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Cliente añadido.");
     }//GEN-LAST:event_btAnadirClienteActionPerformed
+    
+    //Dos propositos: vacia los campos al eliminar un cliente, si no se hace,
+    //no se elimina del XML
+    //Tambien los limpia al crear un nuevo cliente, por si habia un valor basura
+    //o algo
+    private void limpiarCampos() {
+        campoID.setText("");
+        campoNombre.setText("");
+        campoTelefono.setText("");
+        campoPlaca.setText("");
+        campoEmail.setText("");
+        campoID.setEnabled(true); 
+        jTable1.clearSelection(); 
+    }
 
+    //guarda el cliente en el xml
+    private void guardarCliente(){
+        try{
+            util.nuevoClienteAlXML.GuardarClientes(clientes,"Data/clientes.xml");
+            limpiarCampos();
+          
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Error al modificar el archivo" + e.getMessage(), 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+        } 
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void eliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClientesActionPerformed
+        //Uno puede seleccionar filas con el mouse, entonces elimina
+        //la fila que seleccione
+        int filaEscogida = jTable1.getSelectedRow();
+        
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una fila con el mouse");
+            return;
+        }
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this, 
+            "¿Quiere eliminar el cliente seleccionado?", 
+            "Confirmar", 
+            javax.swing.JOptionPane.YES_NO_OPTION);
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+        //elimina en el array
+        clientes.remove(filaEscogida);
+
+        //elimina en la tabla
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        tabla.removeRow(filaEscogida);
+
+        //cambia el XML
+        guardarCliente();
+        javax.swing.JOptionPane.showMessageDialog(this, "Cliente eliminado exitosamente.");
+    }
+
+    }//GEN-LAST:event_eliminarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,8 +442,8 @@ public class ventanaClientes extends javax.swing.JDialog {
     private java.awt.TextField campoNombre;
     private java.awt.TextField campoPlaca;
     private java.awt.TextField campoTelefono;
+    private javax.swing.JButton eliminarClientes;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
