@@ -25,6 +25,22 @@ public class ventanaClientes extends javax.swing.JDialog {
     
         llenarTabla();
         this.setSize(1024,768);
+        
+        setLayout(null);
+        textoID.setBounds(64, 64, 32, 32);
+        campoID.setBounds(96, 64, 128, 32);
+        textoPlaca.setBounds(32, 112, 64, 32);
+        campoPlaca.setBounds(96, 112, 128, 32);
+        textoNombre.setBounds(256, 64, 96, 32);
+        campoNombre.setBounds(352, 64, 412, 32);
+        textoTelefono.setBounds(256, 112, 96, 32);
+        campoTelefono.setBounds(352, 112, 256, 32);
+        textoEmail.setBounds(256, 160, 64, 32);
+        campoEmail.setBounds(352, 160, 412, 32);
+        btAnadirCliente.setBounds(832, 64, 128, 32);
+        eliminarClientes.setBounds(832, 128, 128, 32);
+        modificarCliente.setBounds(832, 192, 128, 32);
+        btnSalir.setBounds(832, 672, 126, 32);
     }
 
     private void llenarTabla(){
@@ -82,27 +98,29 @@ public class ventanaClientes extends javax.swing.JDialog {
         campoID = new java.awt.TextField();
         campoNombre = new java.awt.TextField();
         campoTelefono = new java.awt.TextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        textoID = new javax.swing.JLabel();
+        textoEmail = new javax.swing.JLabel();
+        textoPlaca = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JLabel();
+        textoTelefono = new javax.swing.JLabel();
         btAnadirCliente = new javax.swing.JButton();
         modificarCliente = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         eliminarClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1024, 768));
 
         jTable1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jTable1.setRowHeight(50);
@@ -139,22 +157,22 @@ public class ventanaClientes extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel1.setText("ID");
+        textoID.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoID.setText("ID");
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel2.setText("Email");
+        textoEmail.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoEmail.setText("Email");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel3.setText("Placa");
+        textoPlaca.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoPlaca.setText("Placa");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel4.setText("Nombre");
+        textoNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoNombre.setText("Nombre");
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel5.setText("Telefono");
+        textoTelefono.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoTelefono.setText("Telefono");
 
-        btAnadirCliente.setText("Anadir Cliente");
+        btAnadirCliente.setText("Nuevo");
         btAnadirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAnadirClienteActionPerformed(evt);
@@ -165,6 +183,13 @@ public class ventanaClientes extends javax.swing.JDialog {
         modificarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarClienteActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -180,43 +205,48 @@ public class ventanaClientes extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addComponent(jLabel2)
-                            .addGap(35, 35, 35)
-                            .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(textoTelefono)
+                        .addGap(20, 20, 20)
+                        .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoID)
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoPlaca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(textoNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textoEmail)
+                                .addGap(35, 35, 35)
+                                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btAnadirCliente)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(eliminarClientes)
-                        .addComponent(modificarCliente)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                    .addComponent(modificarCliente)
+                    .addComponent(eliminarClientes))
+                .addContainerGap(245, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(53, 53, 53)
-                    .addComponent(jLabel3)
-                    .addContainerGap(885, Short.MAX_VALUE)))
+                    .addComponent(textoPlaca)
+                    .addContainerGap(926, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,14 +259,14 @@ public class ventanaClientes extends javax.swing.JDialog {
                                 .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(123, 123, 123)
-                                .addComponent(jLabel1)))
+                                .addComponent(textoID)))
                         .addGap(74, 74, 74)
                         .addComponent(campoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel4)
+                                .addComponent(textoNombre)
                                 .addGap(9, 9, 9))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(85, 85, 85)
@@ -248,30 +278,24 @@ public class ventanaClientes extends javax.swing.JDialog {
                                 .addGap(54, 54, 54)
                                 .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(textoTelefono)
                                 .addGap(8, 8, 8))
-                            .addComponent(modificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(modificarCliente, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eliminarClientes)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textoEmail)
+                            .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(eliminarClientes, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(242, 242, 242)
-                    .addComponent(jLabel3)
-                    .addContainerGap(476, Short.MAX_VALUE)))
+                    .addComponent(textoPlaca)
+                    .addContainerGap(502, Short.MAX_VALUE)))
         );
 
         pack();
@@ -400,34 +424,13 @@ public class ventanaClientes extends javax.swing.JDialog {
         javax.swing.JOptionPane.showMessageDialog(this, "Cliente modificado.");
     }//GEN-LAST:event_modificarClienteActionPerformed
     
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        //Sale de la ventana
+        setVisible(false);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     private void eliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClientesActionPerformed
-        //Uno puede seleccionar filas con el mouse, entonces elimina
-        //la fila que seleccione
-        int filaEscogida = jTable1.getSelectedRow();
-        
-        //Si no escoge una fila
-        if(filaEscogida == -1){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un cliente con el mouse");
-            return;
-        }
-        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this, 
-            "¿Quiere eliminar el cliente seleccionado?", 
-            "Confirmar", 
-            javax.swing.JOptionPane.YES_NO_OPTION);
-
-    if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
-        //elimina en el array
-        clientes.remove(filaEscogida);
-
-        //elimina en la tabla
-        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
-        tabla.removeRow(filaEscogida);
-
-        //cambia el XML
-        guardarCliente();
-        javax.swing.JOptionPane.showMessageDialog(this, "Cliente eliminado exitosamente.");
-    }
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_eliminarClientesActionPerformed
 
     /**
@@ -474,19 +477,20 @@ public class ventanaClientes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAnadirCliente;
+    private javax.swing.JButton btnSalir;
     private java.awt.TextField campoEmail;
     private java.awt.TextField campoID;
     private java.awt.TextField campoNombre;
     private java.awt.TextField campoPlaca;
     private java.awt.TextField campoTelefono;
     private javax.swing.JButton eliminarClientes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton modificarCliente;
+    private javax.swing.JLabel textoEmail;
+    private javax.swing.JLabel textoID;
+    private javax.swing.JLabel textoNombre;
+    private javax.swing.JLabel textoPlaca;
+    private javax.swing.JLabel textoTelefono;
     // End of variables declaration//GEN-END:variables
 }

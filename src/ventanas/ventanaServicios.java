@@ -26,6 +26,18 @@ public class ventanaServicios extends javax.swing.JDialog {
         initComponents();
         llenarTabla();
         this.setSize(1024,768);
+        
+        setLayout(null);
+        textoID.setBounds(64, 64, 32, 32);
+        campoID.setBounds(96, 64, 96, 32);
+        textoNombre.setBounds(256, 64, 96, 32);
+        campoNombre.setBounds(352, 64, 412, 32);
+        textoPrecio.setBounds(256, 112, 64, 32);
+        campoPrecio.setBounds(352, 112, 256, 32);
+        btAnadirServicio.setBounds(832, 64, 128, 32);
+        eliminarServicio.setBounds(832, 128, 128, 32);
+        modificarServicio.setBounds(832, 192, 128, 32);
+        btnSalir.setBounds(832, 672, 126, 32);
     }
 
     private void llenarTabla(){
@@ -38,7 +50,7 @@ public class ventanaServicios extends javax.swing.JDialog {
         
             columnas.addElement("Identificacion");
             columnas.addElement("Nombre");
-            columnas.addElement("Puesto");
+            columnas.addElement("Precio");
 
             
             //Filas de la tabla
@@ -48,7 +60,7 @@ public class ventanaServicios extends javax.swing.JDialog {
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(s.getIdentificacion());
                 fila.addElement(s.getNombre());
-                fila.addElement(s.getPrecio());
+                fila.addElement("₡" + s.getPrecio());
             
                 filas.addElement(fila);
             }
@@ -80,44 +92,47 @@ public class ventanaServicios extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaServicios = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        textoID = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JLabel();
+        textoPrecio = new javax.swing.JLabel();
         btAnadirServicio = new javax.swing.JButton();
         modificarServicio = new javax.swing.JButton();
         eliminarServicio = new javax.swing.JButton();
         campoPrecio = new java.awt.TextField();
         campoID = new java.awt.TextField();
         campoNombre = new java.awt.TextField();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setSize(new java.awt.Dimension(1024, 768));
 
         tablaServicios.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         tablaServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         tablaServicios.setRowHeight(50);
         tablaServicios.setRowMargin(3);
         jScrollPane1.setViewportView(tablaServicios);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel1.setText("ID");
+        textoID.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoID.setText("ID");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel4.setText("Nombre");
+        textoNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoNombre.setText("Nombre");
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel5.setText("Precio");
+        textoPrecio.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoPrecio.setText("Precio");
 
-        btAnadirServicio.setText("Anadir Servicio");
+        btAnadirServicio.setText("Nuevo");
         btAnadirServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAnadirServicioActionPerformed(evt);
@@ -138,21 +153,31 @@ public class ventanaServicios extends javax.swing.JDialog {
             }
         });
 
+        campoPrecio.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         campoPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPrecioActionPerformed(evt);
             }
         });
 
+        campoID.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         campoID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoIDActionPerformed(evt);
             }
         });
 
+        campoNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         campoNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNombreActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salir(evt);
             }
         });
 
@@ -160,34 +185,37 @@ public class ventanaServicios extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(20, 20, 20)
-                                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(239, 239, 239))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)))
+                        .addComponent(textoID)
+                        .addGap(20, 20, 20)
+                        .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(239, 239, 239))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoNombre)
+                            .addComponent(textoPrecio))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btAnadirServicio)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(eliminarServicio)
                         .addComponent(modificarServicio)))
                 .addGap(73, 73, 73))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,41 +224,40 @@ public class ventanaServicios extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAnadirServicio)
-                    .addComponent(jLabel1))
+                    .addComponent(textoID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(41, 41, 41)
+                        .addComponent(modificarServicio))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(textoNombre)
+                        .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(eliminarServicio))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(modificarServicio))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(eliminarServicio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                        .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoPrecio))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(btnSalir)
+                .addGap(26, 26, 26))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-        private void limpiarCampos() {
+    private void limpiarCampos() {
         campoID.setText("");
         campoNombre.setText("");
         campoPrecio.setText("");
-        campoID.setEnabled(true); 
+        campoID.setEnabled(true);
         tablaServicios.clearSelection(); 
     }
 
@@ -268,7 +295,7 @@ public class ventanaServicios extends javax.swing.JDialog {
         Vector<String> filaNueva = new Vector<>();
         filaNueva.add(id);
         filaNueva.add(nombre);
-        filaNueva.add(precio);
+        filaNueva.add("₡" + precio);
 
         tabla.addRow(filaNueva);
         //guarda el servicio nuevo en el xml
@@ -343,7 +370,7 @@ public class ventanaServicios extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this, "Servicio eliminado exitosamente.");
         }
     }//GEN-LAST:event_eliminarServicioActionPerformed
-
+                                            
     private void campoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoPrecioActionPerformed
@@ -355,6 +382,11 @@ public class ventanaServicios extends javax.swing.JDialog {
     private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreActionPerformed
+
+    private void salir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir
+        //Sale de la ventana
+        setVisible(false);
+    }//GEN-LAST:event_salir
 
     /**
      * @param args the command line arguments
@@ -403,16 +435,17 @@ public class ventanaServicios extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAnadirServicio;
+    private javax.swing.JButton btnSalir;
     private java.awt.TextField campoID;
     private java.awt.TextField campoNombre;
     private java.awt.TextField campoPrecio;
     private javax.swing.JButton eliminarServicio;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarServicio;
     private javax.swing.JTable tablaServicios;
+    private javax.swing.JLabel textoID;
+    private javax.swing.JLabel textoNombre;
+    private javax.swing.JLabel textoPrecio;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -4,17 +4,11 @@
  */
 package aplicacion;
 
-import Conceptos.Clientes;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-
 import ventanas.Escritorio;
 /**
  * Clase main que corre el programa
  * @author Rafael
- * Carné: 
+ * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
  */

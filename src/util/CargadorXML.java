@@ -14,6 +14,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 /**
+ * Cargador del archivo XML
  * @author Jose Rafael Barrantes Quesada
  * Carné: 2025122443
  * @author Ian Alexander Valerio Steller

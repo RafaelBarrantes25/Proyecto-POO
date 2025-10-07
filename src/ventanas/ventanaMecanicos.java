@@ -26,6 +26,20 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         initComponents();
         llenarTabla();
         this.setSize(1024,768);
+        
+        setLayout(null);
+        textoID.setBounds(64, 64, 32, 32);
+        campoID.setBounds(96, 64, 96, 32);
+        textoNombre.setBounds(256, 64, 96, 32);
+        campoNombre.setBounds(352, 64, 412, 32);
+        textoPuesto.setBounds(256, 112, 96, 32);
+        campoPuesto.setBounds(352, 112, 412, 32);
+        textoServicios.setBounds(244, 160, 128, 32);
+        btnServicios.setBounds(352, 160, 412, 32);
+        btAnadirMecanico.setBounds(832, 64, 128, 32);
+        eliminarMecanico.setBounds(832, 128, 128, 32);
+        modificarMecanico.setBounds(832, 192, 128, 32);
+        btnSalir.setBounds(832, 672, 126, 32);
     }
 
     private void llenarTabla(){
@@ -80,44 +94,47 @@ public class ventanaMecanicos extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMecanicos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        textoID = new javax.swing.JLabel();
+        textoNombre = new javax.swing.JLabel();
+        textoPuesto = new javax.swing.JLabel();
         btAnadirMecanico = new javax.swing.JButton();
         modificarMecanico = new javax.swing.JButton();
         eliminarMecanico = new javax.swing.JButton();
         campoPuesto = new java.awt.TextField();
         campoID = new java.awt.TextField();
         campoNombre = new java.awt.TextField();
+        btnSalir = new javax.swing.JButton();
+        textoServicios = new javax.swing.JLabel();
+        btnServicios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tablaMecanicos.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         tablaMecanicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
         ));
         tablaMecanicos.setRowHeight(50);
         tablaMecanicos.setRowMargin(3);
         jScrollPane1.setViewportView(tablaMecanicos);
 
-        jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel1.setText("ID");
+        textoID.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoID.setText("ID");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel4.setText("Nombre");
+        textoNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoNombre.setText("Nombre");
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel5.setText("Puesto");
+        textoPuesto.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoPuesto.setText("Puesto");
 
-        btAnadirMecanico.setText("Anadir Mecanico");
+        btAnadirMecanico.setText("Nuevo");
         btAnadirMecanico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAnadirMecanicoActionPerformed(evt);
@@ -156,70 +173,92 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             }
         });
 
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirsalir(evt);
+            }
+        });
+
+        textoServicios.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textoServicios.setText("Servicios");
+
+        btnServicios.setText("Ver / Editar");
+        btnServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiciosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textoPuesto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(textoID)
                                 .addGap(20, 20, 20)
                                 .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(239, 239, 239))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(66, 66, 66)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textoServicios)
+                                    .addComponent(textoNombre))))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(275, 275, 275)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btAnadirMecanico)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(eliminarMecanico)
+                                .addComponent(modificarMecanico)))
+                        .addGap(73, 73, 73))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAnadirMecanico)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(eliminarMecanico)
-                        .addComponent(modificarMecanico)))
-                .addGap(73, 73, 73))
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAnadirMecanico)
-                    .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(modificarMecanico))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(eliminarMecanico))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAnadirMecanico)
+                            .addComponent(textoID)
+                            .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(textoNombre)))
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(modificarMecanico)
+                        .addGap(50, 50, 50)
+                        .addComponent(eliminarMecanico))
+                    .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoPuesto)
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textoServicios)
+                            .addComponent(btnServicios))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(btnSalir)
+                .addGap(51, 51, 51))
         );
 
         pack();
@@ -356,6 +395,15 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNombreActionPerformed
 
+    private void btnSalirsalir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirsalir
+        //Sale de la ventana
+        setVisible(false);
+    }//GEN-LAST:event_btnSalirsalir
+
+    private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnServiciosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,16 +449,19 @@ public class ventanaMecanicos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAnadirMecanico;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnServicios;
     private java.awt.TextField campoID;
     private java.awt.TextField campoNombre;
     private java.awt.TextField campoPuesto;
     private javax.swing.JButton eliminarMecanico;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarMecanico;
     private javax.swing.JTable tablaMecanicos;
+    private javax.swing.JLabel textoID;
+    private javax.swing.JLabel textoNombre;
+    private javax.swing.JLabel textoPuesto;
+    private javax.swing.JLabel textoServicios;
     // End of variables declaration//GEN-END:variables
 
 }
