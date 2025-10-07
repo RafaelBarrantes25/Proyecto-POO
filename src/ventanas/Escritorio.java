@@ -37,8 +37,8 @@ public class Escritorio extends javax.swing.JFrame {
 
         botonMecanicos = new javax.swing.JButton();
         botonClientes = new javax.swing.JButton();
-        botonServicios = new javax.swing.JButton();
         textoClientes = new javax.swing.JLabel();
+        botonServicios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
@@ -69,10 +69,6 @@ public class Escritorio extends javax.swing.JFrame {
             }
         });
 
-        botonServicios.setBackground(new java.awt.Color(255, 255, 255));
-        botonServicios.setForeground(new java.awt.Color(0, 0, 0));
-        botonServicios.setLabel("Servicios");
-
         textoClientes.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         textoClientes.setForeground(new java.awt.Color(0, 0, 0));
         textoClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -82,6 +78,15 @@ public class Escritorio extends javax.swing.JFrame {
         textoClientes.setMaximumSize(new java.awt.Dimension(144, 32));
         textoClientes.setMinimumSize(new java.awt.Dimension(144, 32));
         textoClientes.setPreferredSize(new java.awt.Dimension(144, 32));
+
+        botonServicios.setBackground(new java.awt.Color(255, 255, 255));
+        botonServicios.setForeground(new java.awt.Color(0, 0, 0));
+        botonServicios.setText("Servicios");
+        botonServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonServiciosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,9 +100,9 @@ public class Escritorio extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                         .addComponent(botonServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(193, 193, 193)
+                        .addGap(170, 170, 170)
                         .addComponent(botonMecanicos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))))
         );
@@ -129,6 +134,14 @@ public class Escritorio extends javax.swing.JFrame {
         clientes.setVisible(true);
     }//GEN-LAST:event_botonClientesActionPerformed
 
+    private void botonServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonServiciosActionPerformed
+        ventanaServicios servicios = new ventanaServicios(Escritorio.this,true);
+        
+        servicios.setVisible(true);
+    }//GEN-LAST:event_botonServiciosActionPerformed
+    
+
+   
     /**
      * @param args the command line arguments
      */

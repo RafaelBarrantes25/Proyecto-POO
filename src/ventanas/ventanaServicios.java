@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package ventanas;
-import Conceptos.Mecanicos;
+import Conceptos.Servicios;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableModel;
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
 */ 
-public class ventanaMecanicos extends javax.swing.JDialog {
+public class ventanaServicios extends javax.swing.JDialog {
 
     
-    ArrayList<Mecanicos> mecanicos;
+    ArrayList<Servicios> servicios;
      
-    public ventanaMecanicos(java.awt.Frame parent, boolean modal) {
+    public ventanaServicios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         llenarTabla();
@@ -31,7 +31,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     private void llenarTabla(){
       
         try {
-            mecanicos = util.MecanicosCargadorXML.Cargar("Data/mecanicos.xml");
+            servicios = util.ServiciosCargadorXML.Cargar("Data/servicios.xml");
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -44,16 +44,16 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Mecanicos m : mecanicos){
+            for (Servicios s : servicios){
                 Vector<String> fila = new Vector<String>();
-                fila.addElement(m.getIdentificacion());
-                fila.addElement(m.getNombre());
-                fila.addElement(m.getPuesto());
+                fila.addElement(s.getIdentificacion());
+                fila.addElement(s.getNombre());
+                fila.addElement(s.getPrecio());
             
                 filas.addElement(fila);
             }
             DefaultTableModel datos = new DefaultTableModel(filas,columnas);
-            this.tablaMecanicos.setModel(datos);
+            this.tablaServicios.setModel(datos);
 
         }/*catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -79,21 +79,21 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMecanicos = new javax.swing.JTable();
+        tablaServicios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btAnadirMecanico = new javax.swing.JButton();
-        modificarMecanico = new javax.swing.JButton();
-        eliminarMecanico = new javax.swing.JButton();
-        campoPuesto = new java.awt.TextField();
+        btAnadirServicio = new javax.swing.JButton();
+        modificarServicio = new javax.swing.JButton();
+        eliminarServicio = new javax.swing.JButton();
+        campoPrecio = new java.awt.TextField();
         campoID = new java.awt.TextField();
         campoNombre = new java.awt.TextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tablaMecanicos.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        tablaMecanicos.setModel(new javax.swing.table.DefaultTableModel(
+        tablaServicios.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        tablaServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,9 +104,9 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tablaMecanicos.setRowHeight(50);
-        tablaMecanicos.setRowMargin(3);
-        jScrollPane1.setViewportView(tablaMecanicos);
+        tablaServicios.setRowHeight(50);
+        tablaServicios.setRowMargin(3);
+        jScrollPane1.setViewportView(tablaServicios);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel1.setText("ID");
@@ -115,32 +115,32 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         jLabel4.setText("Nombre");
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jLabel5.setText("Puesto");
+        jLabel5.setText("Precio");
 
-        btAnadirMecanico.setText("Anadir Mecanico");
-        btAnadirMecanico.addActionListener(new java.awt.event.ActionListener() {
+        btAnadirServicio.setText("Anadir Servicio");
+        btAnadirServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAnadirMecanicoActionPerformed(evt);
+                btAnadirServicioActionPerformed(evt);
             }
         });
 
-        modificarMecanico.setText("Modificar");
-        modificarMecanico.addActionListener(new java.awt.event.ActionListener() {
+        modificarServicio.setText("Modificar");
+        modificarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarMecanicoActionPerformed(evt);
+                modificarServicioActionPerformed(evt);
             }
         });
 
-        eliminarMecanico.setText("Eliminar");
-        eliminarMecanico.addActionListener(new java.awt.event.ActionListener() {
+        eliminarServicio.setText("Eliminar");
+        eliminarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarMecanicoActionPerformed(evt);
+                eliminarServicioActionPerformed(evt);
             }
         });
 
-        campoPuesto.addActionListener(new java.awt.event.ActionListener() {
+        campoPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPuestoActionPerformed(evt);
+                campoPrecioActionPerformed(evt);
             }
         });
 
@@ -180,13 +180,13 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAnadirMecanico)
+                    .addComponent(btAnadirServicio)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(eliminarMecanico)
-                        .addComponent(modificarMecanico)))
+                        .addComponent(eliminarServicio)
+                        .addComponent(modificarServicio)))
                 .addGap(73, 73, 73))
         );
         layout.setVerticalGroup(
@@ -195,7 +195,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAnadirMecanico)
+                    .addComponent(btAnadirServicio)
                     .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -203,21 +203,21 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
-                                .addComponent(modificarMecanico))
+                                .addComponent(modificarServicio))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel4)
                                 .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
-                                .addComponent(eliminarMecanico))
+                                .addComponent(eliminarServicio))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                        .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(140, 140, 140)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -229,15 +229,15 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         private void limpiarCampos() {
         campoID.setText("");
         campoNombre.setText("");
-        campoPuesto.setText("");
+        campoPrecio.setText("");
         campoID.setEnabled(true); 
-        tablaMecanicos.clearSelection(); 
+        tablaServicios.clearSelection(); 
     }
 
     //guarda el mecanico en el xml
-    private void guardarMecanico(){
+    private void guardarServicio(){
         try{
-            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Data/mecanicos.xml");
+            util.nuevoServicioAlXML.GuardarServicios(servicios,"Data/servicios.xml");
             limpiarCampos();
           
         } catch (Exception e){
@@ -249,104 +249,104 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         } 
     }
     
-    private void btAnadirMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirMecanicoActionPerformed
+    private void btAnadirServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnadirServicioActionPerformed
         String id = campoID.getText();
         String nombre = campoNombre.getText();
-        String placa = campoPuesto.getText();
+        String precio = campoPrecio.getText();
 
         //Crea una ventana de error si no llena todos los campos
-        if (id.isEmpty() || nombre.isEmpty() || placa.isEmpty()){
+        if (id.isEmpty() || nombre.isEmpty() || precio.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
             //Es importante el return porque si no, igual se crea la fila, solo que vacia
             return;
         }
 
-        Mecanicos mecanicoNuevo = new Mecanicos(id,nombre,placa);
-        mecanicos.add(mecanicoNuevo);
-        DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+        Servicios servicioNuevo = new Servicios(id,nombre,precio);
+        servicios.add(servicioNuevo);
+        DefaultTableModel tabla = (DefaultTableModel) tablaServicios.getModel();
 
         Vector<String> filaNueva = new Vector<>();
         filaNueva.add(id);
         filaNueva.add(nombre);
-        filaNueva.add(placa);
+        filaNueva.add(precio);
 
         tabla.addRow(filaNueva);
-        //guarda el mecanico nuevo en el xml
-        guardarMecanico();
+        //guarda el servicio nuevo en el xml
+        guardarServicio();
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Mecanico añadido.");
-    }//GEN-LAST:event_btAnadirMecanicoActionPerformed
+        javax.swing.JOptionPane.showMessageDialog(this, "Servicio añadido.");
+    }//GEN-LAST:event_btAnadirServicioActionPerformed
 
-    private void modificarMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMecanicoActionPerformed
-        int filaEscogida = tablaMecanicos.getSelectedRow();
+    private void modificarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarServicioActionPerformed
+        int filaEscogida = tablaServicios.getSelectedRow();
 
         //Si no escoge una fila
         if(filaEscogida == -1){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un mecanico con el mouse");
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un servicio con el mouse");
             return;
         }
 
-        Mecanicos mecanicoPorModificar = mecanicos.get(filaEscogida);
+        Servicios servicioPorModificar = servicios.get(filaEscogida);
 
         String idNuevo = campoID.getText().trim();
         String nombreNuevo = campoNombre.getText().trim();
-        String placaNueva = campoPuesto.getText().trim();
+        String precioNuevo = campoPrecio.getText().trim();
 
 
-        if (idNuevo.isEmpty() || nombreNuevo.isEmpty() || placaNueva.isEmpty()){
+        if (idNuevo.isEmpty() || nombreNuevo.isEmpty() || precioNuevo.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "Todos los campos deben estar llenos","Error01",javax.swing.JOptionPane.ERROR_MESSAGE);
             //Es importante el return porque si no, igual se crea la fila, solo que vacia.
             return;
         }
 
-        mecanicoPorModificar.setIdentificacion(idNuevo);
-        mecanicoPorModificar.setNombre(nombreNuevo);
-        mecanicoPorModificar.setPuesto(placaNueva);
+        servicioPorModificar.setIdentificacion(idNuevo);
+        servicioPorModificar.setNombre(nombreNuevo);
+        servicioPorModificar.setPrecio(precioNuevo);
 
 
-        DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+        DefaultTableModel tabla = (DefaultTableModel) tablaServicios.getModel();
 
         tabla.setValueAt(idNuevo, filaEscogida, 0);
         tabla.setValueAt(nombreNuevo, filaEscogida, 1);
-        tabla.setValueAt(placaNueva, filaEscogida, 2);
+        tabla.setValueAt(precioNuevo, filaEscogida, 2);
 
-        guardarMecanico();
+        guardarServicio();
 
         javax.swing.JOptionPane.showMessageDialog(this, "Mecanico modificado.");
-    }//GEN-LAST:event_modificarMecanicoActionPerformed
+    }//GEN-LAST:event_modificarServicioActionPerformed
 
-    private void eliminarMecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMecanicoActionPerformed
+    private void eliminarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarServicioActionPerformed
         //Uno puede seleccionar filas con el mouse, entonces elimina
         //la fila que seleccione
-        int filaEscogida = tablaMecanicos.getSelectedRow();
+        int filaEscogida = tablaServicios.getSelectedRow();
 
         //Si no escoge una fila
         if(filaEscogida == -1){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un mecanico con el mouse");
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un servicio con el mouse");
             return;
         }
         int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this,
-            "¿Quiere eliminar el mecanico seleccionado?",
+            "¿Quiere eliminar el servicio seleccionado?",
             "Confirmar",
             javax.swing.JOptionPane.YES_NO_OPTION);
 
         if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
             //elimina en el array
-            mecanicos.remove(filaEscogida);
+            servicios.remove(filaEscogida);
 
             //elimina en la tabla
-            DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
+            DefaultTableModel tabla = (DefaultTableModel) tablaServicios.getModel();
             tabla.removeRow(filaEscogida);
 
             //cambia el XML
-            guardarMecanico();
-            javax.swing.JOptionPane.showMessageDialog(this, "Mecanico eliminado exitosamente.");
+            guardarServicio();
+            javax.swing.JOptionPane.showMessageDialog(this, "Servicio eliminado exitosamente.");
         }
-    }//GEN-LAST:event_eliminarMecanicoActionPerformed
+    }//GEN-LAST:event_eliminarServicioActionPerformed
 
-    private void campoPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPuestoActionPerformed
+    private void campoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoPuestoActionPerformed
+    }//GEN-LAST:event_campoPrecioActionPerformed
 
     private void campoIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoIDActionPerformed
         // TODO add your handling code here:
@@ -373,21 +373,23 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaMecanicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaMecanicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaMecanicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaMecanicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ventanaMecanicos dialog = new ventanaMecanicos(new javax.swing.JFrame(), true);
+                ventanaServicios dialog = new ventanaServicios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -400,17 +402,17 @@ public class ventanaMecanicos extends javax.swing.JDialog {
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAnadirMecanico;
+    private javax.swing.JButton btAnadirServicio;
     private java.awt.TextField campoID;
     private java.awt.TextField campoNombre;
-    private java.awt.TextField campoPuesto;
-    private javax.swing.JButton eliminarMecanico;
+    private java.awt.TextField campoPrecio;
+    private javax.swing.JButton eliminarServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificarMecanico;
-    private javax.swing.JTable tablaMecanicos;
+    private javax.swing.JButton modificarServicio;
+    private javax.swing.JTable tablaServicios;
     // End of variables declaration//GEN-END:variables
 
 }
