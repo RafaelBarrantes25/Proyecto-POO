@@ -58,6 +58,7 @@ public class MecanicosCargadorXML {
             
             for (int k=0; k<nodos.getLength(); k++){
                 Node nodo = nodos.item(k);
+                ArrayList<String> servicios = new ArrayList<>();
                 if (nodo.getNodeType() == Node.ELEMENT_NODE) {
                     Element elemento = (Element)nodo;
                     //Esto me dio mil problemas, es que la id es un
@@ -66,8 +67,23 @@ public class MecanicosCargadorXML {
 
                     String nombre = getValue("nombre",elemento);
                     String puesto = getValue("puesto",elemento);
-                    Mecanicos mecanico = new Mecanicos(identificacion,nombre,puesto);
+                    
+                    servicios.add(elemento.getAttribute("servicios"));
+                    
+                    NodeList listaServicios = elemento.getElementsByTagName("servicios").item(0).getChildNodes();
+                    
+                    for(int j = 0; j < listaServicios.getLength(); j++){
+                        Node servicio = listaServicios.item(j);
+                        
+                        if (servicio.getNodeType() == Node.ELEMENT_NODE
+                            && servicio.getNodeName().equals("id")) {
+                            servicios.add(servicio.getTextContent());
+                        }
+                    }
+                    
+                    Mecanicos mecanico = new Mecanicos(identificacion,nombre,puesto, servicios);
                     mecanicos.add(mecanico);
+                    
                 }
             }
         } catch (Exception ex){

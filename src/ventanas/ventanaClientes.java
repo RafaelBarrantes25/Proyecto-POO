@@ -430,7 +430,34 @@ public class ventanaClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void eliminarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClientesActionPerformed
-        // TODO add your handling code here:
+        //Uno puede seleccionar filas con el mouse, entonces elimina
+        //la fila que seleccione
+        int filaEscogida = jTable1.getSelectedRow();
+
+        //Si no escoge una fila
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una fila con el mouse");
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un cliente con el mouse");
+            return;
+        }
+        int confirmacion = javax.swing.JOptionPane.showConfirmDialog(this, 
+            "¿Quiere eliminar el cliente seleccionado?", 
+            "Confirmar", 
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == javax.swing.JOptionPane.YES_OPTION) {
+            //elimina en el array
+            clientes.remove(filaEscogida);
+
+            //elimina en la tabla
+            DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+            tabla.removeRow(filaEscogida);
+
+            //cambia el XML
+            guardarCliente();
+            javax.swing.JOptionPane.showMessageDialog(this, "Cliente eliminado exitosamente.");
+        }//GEN-LAST:event_eliminarClientesActionPerformed
+
     }//GEN-LAST:event_eliminarClientesActionPerformed
 
     /**

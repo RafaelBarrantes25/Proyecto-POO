@@ -17,17 +17,17 @@ public class Mecanicos {
         String identificacion;
         String nombre;
         String puesto;
-        ArrayList<Servicios> serviciosValidados;
+        ArrayList<String> serviciosValidados;
 
-    public Mecanicos(String identificacion, String nombre, String puesto) {
+    public Mecanicos(String identificacion, String nombre, String puesto, ArrayList servicios) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.puesto = puesto;
-        this.serviciosValidados = new ArrayList<Servicios>();
+        this.serviciosValidados = servicios;
     }
     
     public Mecanicos(){
-        this.serviciosValidados = new ArrayList<Servicios>();
+        this.serviciosValidados = new ArrayList<String>();
     }
 
     public String getIdentificacion() {
@@ -52,6 +52,22 @@ public class Mecanicos {
 
     public void setPuesto(String puesto) {
         this.puesto = puesto;
+    }
+
+    public ArrayList<String> getServiciosValidados() {
+        return serviciosValidados;
+    }
+
+    public void setServiciosValidados(ArrayList<String> serviciosValidados) {
+        this.serviciosValidados = serviciosValidados;
+    }
+    
+    //Imprime todos los servicios del mecánico
+    public void imprimirServicios(){
+        System.out.println(this.nombre);
+        for(String s : this.serviciosValidados){
+            System.out.println(s);
+        }
     }
     
     @Override

@@ -3,21 +3,61 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package ventanas;
+import Conceptos.Mecanicos;
+import Conceptos.Servicios;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JCheckBox;
 
 /**
  *
  * @author ianva
  */
-public class VentanaCheckServicios extends javax.swing.JDialog {
+public class VentanaCheckServicios extends javax.swing.JDialog{
 
     /**
      * Creates new form VentanaCheckServicios
      */
-    public VentanaCheckServicios(java.awt.Frame parent, boolean modal) {
+    
+    Mecanicos mecanico;
+    ArrayList<Servicios> servicios = new ArrayList<>();
+    
+    public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanicos mecanico) {
         super(parent, modal);
         initComponents();
+        this.setSize(512, 393);
+        
+        this.mecanico = mecanico;
+        llenarLista();
     }
 
+    void llenarLista(){
+        servicios = util.ServiciosCargadorXML.Cargar("data/servicios.xml");
+        
+        try{
+            int y = 32;
+            for(Servicios s: servicios){
+                JCheckBox caja = new JCheckBox();
+                caja.setText(s.getNombre());
+                validarServicios(caja, s.getIdentificacion());
+                caja.setBounds(32, y, 256, 32);
+                panel.add(caja);
+                y = y + 32;
+                   
+            }
+        } finally{
+        }
+    }
+    
+    void validarServicios(JCheckBox caja, String servicio){
+        for(String id: this.mecanico.getServiciosValidados()){
+            if(id.equals(servicio)){
+                caja.setSelected(true);
+                break;
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +67,48 @@ public class VentanaCheckServicios extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 376, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 276, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -73,7 +144,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaCheckServicios dialog = new VentanaCheckServicios(new javax.swing.JFrame(), true);
+                VentanaCheckServicios dialog = new VentanaCheckServicios(new javax.swing.JDialog(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -84,7 +155,9 @@ public class VentanaCheckServicios extends javax.swing.JDialog {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

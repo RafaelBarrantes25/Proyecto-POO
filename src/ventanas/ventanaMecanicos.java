@@ -198,16 +198,15 @@ public class ventanaMecanicos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(textoID)
+                        .addGap(20, 20, 20)
+                        .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textoPuesto, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(textoID)
-                                .addGap(20, 20, 20)
-                                .addComponent(campoID, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textoServicios)
-                                    .addComponent(textoNombre))))
+                            .addComponent(textoServicios)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(textoPuesto)
+                                .addComponent(textoNombre)))
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,7 +299,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             return;
         }
 
-        Mecanicos mecanicoNuevo = new Mecanicos(id,nombre,placa);
+        Mecanicos mecanicoNuevo = new Mecanicos(id,nombre,placa, new ArrayList<String>());
         mecanicos.add(mecanicoNuevo);
         DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
 
@@ -401,7 +400,18 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirsalir
 
     private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
-        // TODO add your handling code here:
+        int filaEscogida = tablaMecanicos.getSelectedRow();
+
+        //Si no escoge una fila
+        if(filaEscogida == -1){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un mecanico con el mouse");
+            return;
+        }
+        
+        Mecanicos mecanico = mecanicos.get(filaEscogida);
+        
+        VentanaCheckServicios ventanaCheckServicios = new VentanaCheckServicios(this, true, mecanico);
+        ventanaCheckServicios.setVisible(true);
     }//GEN-LAST:event_btnServiciosActionPerformed
 
     /**
