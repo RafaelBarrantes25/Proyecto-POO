@@ -81,10 +81,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="titulo2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="94" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="botonClientes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="botonMecanicos" alignment="3" min="-2" pref="144" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="botonServicios" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="botonClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonMecanicos" alignment="3" min="-2" pref="144" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">

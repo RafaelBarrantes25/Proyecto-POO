@@ -456,7 +456,7 @@ public class ventanaClientes extends javax.swing.JDialog {
             //cambia el XML
             guardarCliente();
             javax.swing.JOptionPane.showMessageDialog(this, "Cliente eliminado exitosamente.");
-        }//GEN-LAST:event_eliminarClientesActionPerformed
+        }                                                
 
     }//GEN-LAST:event_eliminarClientesActionPerformed
 

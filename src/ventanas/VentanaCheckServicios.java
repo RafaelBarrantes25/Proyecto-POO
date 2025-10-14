@@ -5,6 +5,8 @@
 package ventanas;
 import Conceptos.Mecanicos;
 import Conceptos.Servicios;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JCheckBox;
@@ -25,25 +27,56 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
     public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanicos mecanico) {
         super(parent, modal);
         initComponents();
-        this.setSize(512, 393);
+        this.setSize(1024, 768);
         
         this.mecanico = mecanico;
         llenarLista();
     }
 
     void llenarLista(){
-        servicios = util.ServiciosCargadorXML.Cargar("data/servicios.xml");
+        servicios = util.ServiciosCargadorXML.Cargar("Data/servicios.xml");
         
         try{
             int y = 32;
             for(Servicios s: servicios){
                 JCheckBox caja = new JCheckBox();
+                
+                caja.setActionCommand(s.getIdentificacion());
+                validarServicios(caja, s.getIdentificacion());
+                
                 caja.setText(s.getNombre());
                 validarServicios(caja, s.getIdentificacion());
                 caja.setBounds(32, y, 256, 32);
                 panel.add(caja);
                 y = y + 32;
                    
+                
+                caja.addActionListener(new ActionListener() {
+                //Por algun motivo, meter el boton en la ventana no
+                //Genero el codigo del boton
+                //Entonces hice un import y override manual
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JCheckBox source = (JCheckBox) e.getSource();
+                    String idServicio = source.getActionCommand();
+
+                    if (source.isSelected()) {
+                        //Si esta seleccionado y no lo tenia antes, se le añade
+                        if (mecanico.getServiciosValidados().contains(idServicio) == false) {
+                            mecanico.getServiciosValidados().add(idServicio);
+                        }
+                    } else {
+                        //si se deselecciona, se quita
+                        mecanico.getServiciosValidados().remove(idServicio);
+                    }
+
+                    }
+                });
+                
+                caja.setBounds(32, y, 256, 32);
+                panel.add(caja);
+                y = y + 32;
+                
             }
         } finally{
         }
@@ -69,6 +102,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
 
         jPanel1 = new javax.swing.JPanel();
         panel = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,15 +117,23 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        btnGuardar.setText("Guardar");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(535, Short.MAX_VALUE)
+                .addComponent(btnGuardar)
+                .addGap(142, 142, 142))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(491, Short.MAX_VALUE)
+                .addComponent(btnGuardar)
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,6 +199,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
