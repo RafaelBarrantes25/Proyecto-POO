@@ -264,7 +264,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     
-        private void limpiarCampos() {
+    private void limpiarCampos() {
         campoID.setText("");
         campoNombre.setText("");
         campoPuesto.setText("");
@@ -409,8 +409,8 @@ public class ventanaMecanicos extends javax.swing.JDialog {
         }
         
         Mecanicos mecanico = mecanicos.get(filaEscogida);
-        
-        VentanaCheckServicios ventanaCheckServicios = new VentanaCheckServicios(this, true, mecanico);
+               
+        VentanaCheckServicios ventanaCheckServicios = new VentanaCheckServicios(this, true, mecanico, mecanicos);
         ventanaCheckServicios.setVisible(true);
     }//GEN-LAST:event_btnServiciosActionPerformed
 

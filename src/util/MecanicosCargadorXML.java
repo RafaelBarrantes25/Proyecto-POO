@@ -67,8 +67,7 @@ public class MecanicosCargadorXML {
 
                     String nombre = getValue("nombre",elemento);
                     String puesto = getValue("puesto",elemento);
-                    
-                    servicios.add(elemento.getAttribute("servicios"));
+
                     
                     NodeList listaServicios = elemento.getElementsByTagName("servicios").item(0).getChildNodes();
                     

@@ -22,14 +22,16 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
      */
     
     Mecanicos mecanico;
+    ArrayList<Mecanicos> mecanicos;
     ArrayList<Servicios> servicios = new ArrayList<>();
     
-    public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanicos mecanico) {
+    public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanicos mecanico, ArrayList<Mecanicos> mecanicos) {
         super(parent, modal);
         initComponents();
-        this.setSize(1024, 768);
+        this.setSize(512, 384);
         
         this.mecanico = mecanico;
+        this.mecanicos = mecanicos;
         llenarLista();
     }
 
@@ -46,10 +48,6 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
                 
                 caja.setText(s.getNombre());
                 validarServicios(caja, s.getIdentificacion());
-                caja.setBounds(32, y, 256, 32);
-                panel.add(caja);
-                y = y + 32;
-                   
                 
                 caja.addActionListener(new ActionListener() {
                 //Por algun motivo, meter el boton en la ventana no
@@ -64,11 +62,12 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
                         //Si esta seleccionado y no lo tenia antes, se le añade
                         if (mecanico.getServiciosValidados().contains(idServicio) == false) {
                             mecanico.getServiciosValidados().add(idServicio);
+                            guardarMecanico();
                         }
                     } else {
                         //si se deselecciona, se quita
                         mecanico.getServiciosValidados().remove(idServicio);
-                    }
+                    }   guardarMecanico();
 
                     }
                 });
@@ -89,6 +88,20 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
                 break;
             }
         }
+    }
+    
+        //guarda el mecanico en el xml
+    private void guardarMecanico(){
+        try{
+            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos, "Data/mecanicos.xml");
+          
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Error al modificar el archivo" + e.getMessage(), 
+                "Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+        } 
     }
     
     /**
@@ -186,7 +199,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                VentanaCheckServicios dialog = new VentanaCheckServicios(new javax.swing.JDialog(), true, null);
+                VentanaCheckServicios dialog = new VentanaCheckServicios(new javax.swing.JDialog(), true, null, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

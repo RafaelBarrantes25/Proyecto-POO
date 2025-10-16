@@ -50,6 +50,14 @@ public class nuevoMecanicoAlXML {
             telefono.appendChild(doc.createTextNode(mecanico.getPuesto()));
             mecanicoElement.appendChild(telefono);
             
+            Element servicios = doc.createElement("servicios");
+            ArrayList<String> validados = mecanico.getServiciosValidados();
+            for(String servicio : validados){
+                Element id = doc.createElement("id");
+                id.appendChild(doc.createTextNode(servicio));
+                servicios.appendChild(id);
+            }
+            mecanicoElement.appendChild(servicios);
         }
 
         //Modifica el XML

@@ -12,8 +12,4 @@
         <nombre>Mecanica Motor</nombre>
         <precio>25000</precio>
     </servicio>
-    <servicio id="103">
-        <nombre>prueba</nombre>
-        <precio>30000000000</precio>
-    </servicio>
 </servicios>
