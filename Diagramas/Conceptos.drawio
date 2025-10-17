@@ -1,0 +1,46 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Conceptos" id="uC0wzHNv45-vwn3pKA7G">
+    <mxGraphModel dx="1783" dy="1111" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Cliente&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="60" y="290" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-2" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String identificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String nombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String placa&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String telefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String email&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="320" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-3" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getPlaca&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setPlaca&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getEemail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setEmail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String toString&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="60" y="420" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-5" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Mecanico&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="470" y="290" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="DiMNoyZRUlCSMilrHkbA-6" target="DiMNoyZRUlCSMilrHkbA-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-6" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String identificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String nombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String puesto&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="470" y="320" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-7" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getPuesto&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setPuesto&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String toString&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="470" y="420" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-8" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Servicio&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="910" y="290" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-9" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String identificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String nombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String precio&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="910" y="320" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DiMNoyZRUlCSMilrHkbA-10" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getPrecio&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setPrecio&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String toString&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="910" y="420" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ZpJSnqIhMPmXYEyuzB7u-2" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;*&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="870" y="350" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="HY7ZyCOnRkbHr1wGWgiG-1" value="Estudiante: Jose Rafael Barrantes Quesada&lt;div&gt;Carné:&amp;nbsp;2025122443&lt;/div&gt;&lt;div&gt;-------------------------------------------------------------&lt;/div&gt;&lt;div&gt;Estudiante: Ian Alexander Valerio Steller&lt;/div&gt;&lt;div&gt;Carné: 2025085826&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="250" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
