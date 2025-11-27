@@ -4,25 +4,27 @@
  */
 package Conceptos;
 
+import java.io.Serializable;
+
 /**
- * Clase Servicios con atributos y métodos
+ * Clase Servicio con atributos y métodos
  * @author Jose Rafael Barrantes Quesada
  * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
  */
-public class Servicios {
+public class Servicio implements Serializable{
         String identificacion;
         String nombre;
         String precio;
 
-    public Servicios(String identificacion, String nombre, String precio) {
+    public Servicio(String identificacion, String nombre, String precio) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.precio = precio;
     }
     
-    public Servicios(){
+    public Servicio(){
         
     }
 

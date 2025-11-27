@@ -4,7 +4,7 @@
  */
 package util;
 
-import Conceptos.Servicios;
+import Conceptos.Servicio;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -44,8 +44,8 @@ public class ServiciosCargadorXML {
         return "";
     }
 
-    public static ArrayList<Servicios> Cargar(String nombreXML) {
-        ArrayList<Servicios> servicios = new ArrayList<>();
+    public static ArrayList<Servicio> Cargar(String nombreXML) {
+        ArrayList<Servicio> servicios = new ArrayList<>();
 
         try {
             File archivo = new File(nombreXML);
@@ -65,7 +65,7 @@ public class ServiciosCargadorXML {
 
                     String nombre = getValue("nombre",elemento);
                     String precio = getValue("precio",elemento);
-                    Servicios servicio = new Servicios(identificacion,nombre,precio);
+                    Servicio servicio = new Servicio(identificacion,nombre,precio);
                     servicios.add(servicio);
                 }
             }

@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ventanas;
-import Conceptos.Servicios;
+package Presentacion;
+import Conceptos.Servicio;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ventanaServicios extends javax.swing.JDialog {
 
     
-    ArrayList<Servicios> servicios;
+    ArrayList<Servicio> servicios;
      
     public ventanaServicios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -56,7 +56,7 @@ public class ventanaServicios extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Servicios s : servicios){
+            for (Servicio s : servicios){
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(s.getIdentificacion());
                 fila.addElement(s.getNombre());
@@ -68,6 +68,8 @@ public class ventanaServicios extends javax.swing.JDialog {
             this.tablaServicios.setModel(datos);
 
         }/*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
         }*/finally{
@@ -104,7 +106,6 @@ public class ventanaServicios extends javax.swing.JDialog {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
         setSize(new java.awt.Dimension(1024, 768));
 
         tablaServicios.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
@@ -288,7 +289,7 @@ public class ventanaServicios extends javax.swing.JDialog {
             return;
         }
 
-        Servicios servicioNuevo = new Servicios(id,nombre,precio);
+        Servicio servicioNuevo = new Servicio(id,nombre,precio);
         servicios.add(servicioNuevo);
         DefaultTableModel tabla = (DefaultTableModel) tablaServicios.getModel();
 
@@ -313,7 +314,7 @@ public class ventanaServicios extends javax.swing.JDialog {
             return;
         }
 
-        Servicios servicioPorModificar = servicios.get(filaEscogida);
+        Servicio servicioPorModificar = servicios.get(filaEscogida);
 
         String idNuevo = campoID.getText().trim();
         String nombreNuevo = campoNombre.getText().trim();

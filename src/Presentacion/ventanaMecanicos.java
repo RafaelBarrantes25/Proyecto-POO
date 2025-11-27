@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ventanas;
-import Conceptos.Mecanicos;
+package Presentacion;
+import Conceptos.Mecanico;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class ventanaMecanicos extends javax.swing.JDialog {
 
     
-    ArrayList<Mecanicos> mecanicos;
+    ArrayList<Mecanico> mecanicos;
      
     public ventanaMecanicos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -58,7 +58,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Mecanicos m : mecanicos){
+            for (Mecanico m : mecanicos){
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(m.getIdentificacion());
                 fila.addElement(m.getNombre());
@@ -70,6 +70,8 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             this.tablaMecanicos.setModel(datos);
 
         }/*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
         }*/finally{
@@ -299,7 +301,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             return;
         }
 
-        Mecanicos mecanicoNuevo = new Mecanicos(id,nombre,placa, new ArrayList<String>());
+        Mecanico mecanicoNuevo = new Mecanico(id,nombre,placa, new ArrayList<String>());
         mecanicos.add(mecanicoNuevo);
         DefaultTableModel tabla = (DefaultTableModel) tablaMecanicos.getModel();
 
@@ -324,7 +326,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             return;
         }
 
-        Mecanicos mecanicoPorModificar = mecanicos.get(filaEscogida);
+        Mecanico mecanicoPorModificar = mecanicos.get(filaEscogida);
 
         String idNuevo = campoID.getText().trim();
         String nombreNuevo = campoNombre.getText().trim();
@@ -408,7 +410,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             return;
         }
         
-        Mecanicos mecanico = mecanicos.get(filaEscogida);
+        Mecanico mecanico = mecanicos.get(filaEscogida);
                
         VentanaCheckServicios ventanaCheckServicios = new VentanaCheckServicios(this, true, mecanico, mecanicos);
         ventanaCheckServicios.setVisible(true);

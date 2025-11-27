@@ -4,7 +4,7 @@
  */
 package util;
 
-import Conceptos.Mecanicos;
+import Conceptos.Mecanico;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -44,8 +44,8 @@ public class MecanicosCargadorXML {
         return "";
     }
 
-    public static ArrayList<Mecanicos> Cargar(String nombreXML) {
-        ArrayList<Mecanicos> mecanicos = new ArrayList<>();
+    public static ArrayList<Mecanico> Cargar(String nombreXML) {
+        ArrayList<Mecanico> mecanicos = new ArrayList<>();
 
         try {
             File archivo = new File(nombreXML);
@@ -80,7 +80,7 @@ public class MecanicosCargadorXML {
                         }
                     }
                     
-                    Mecanicos mecanico = new Mecanicos(identificacion,nombre,puesto, servicios);
+                    Mecanico mecanico = new Mecanico(identificacion,nombre,puesto, servicios);
                     mecanicos.add(mecanico);
                     
                 }

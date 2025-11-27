@@ -5,7 +5,7 @@
 
 package util;
 
-import Conceptos.Mecanicos;
+import Conceptos.Mecanico;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +26,7 @@ import org.w3c.dom.Element;
 public class nuevoMecanicoAlXML {
 
     //Modifica el XML para añadir mecanicos nuevos
-    public static void GuardarMecanicos(ArrayList<Mecanicos> mecanicos, String nombreXML) throws Exception {
+    public static void GuardarMecanicos(ArrayList<Mecanico> mecanicos, String nombreXML) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.newDocument();
@@ -35,7 +35,7 @@ public class nuevoMecanicoAlXML {
         Element rootElement = doc.createElement("mecanicos");
         doc.appendChild(rootElement);
 
-        for (Mecanicos mecanico : mecanicos) {
+        for (Mecanico mecanico : mecanicos) {
 
             Element mecanicoElement = doc.createElement("mecanico");
             mecanicoElement.setAttribute("id", mecanico.getIdentificacion());

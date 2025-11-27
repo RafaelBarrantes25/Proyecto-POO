@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ventanas;
+package Presentacion;
 
 /**
  * @author Jose Rafael Barrantes Quesada
@@ -50,10 +50,9 @@ public class Escritorio extends javax.swing.JFrame {
         titulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(1024, 768));
         setMinimumSize(new java.awt.Dimension(1024, 768));
-        setPreferredSize(new java.awt.Dimension(1024, 768));
 
         botonMecanicos.setBackground(new java.awt.Color(255, 255, 255));
         botonMecanicos.setForeground(new java.awt.Color(0, 0, 0));

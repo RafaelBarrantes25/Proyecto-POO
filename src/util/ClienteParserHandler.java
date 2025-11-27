@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
-import Conceptos.Clientes;
+import Conceptos.Cliente;
 import java.util.ArrayList;
 import java.util.Stack;
 import org.xml.sax.Attributes;
@@ -17,7 +17,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Carné: 2025085826
 */ 
 public class ClienteParserHandler extends DefaultHandler {
-    ArrayList<Clientes> clientes = new ArrayList<>();
+    ArrayList<Cliente> clientes = new ArrayList<>();
     Stack pilaElementos = new Stack();
     Stack pilaObjetos = new Stack();
     
@@ -37,7 +37,7 @@ public void startElement(String uri, String localName, String qName, Attributes 
     this.pilaElementos.push(qName);
 
     if ("cliente".equals(qName)){
-        Clientes cliente = new Clientes();
+        Cliente cliente = new Cliente();
         this.pilaObjetos.push(cliente);
     
         String id = attributes.getValue("id");
@@ -52,7 +52,7 @@ public void endElement(String uri, String localName, String qName) throws SAXExc
     this.pilaElementos.pop();
 
     if ("cliente".equals(qName)) {
-        Clientes cliente = (Clientes)this.pilaObjetos.pop();
+        Cliente cliente = (Cliente)this.pilaObjetos.pop();
         this.clientes.add(cliente);
     }
 }
@@ -70,13 +70,13 @@ public void characters(char[] ch, int start, int length) throws SAXException
 
     /* Saca los valores del XML y los asigna al objeto cliente*/
     if ("nombre".equals(elementoActual())) {
-    Clientes cliente = (Clientes)this.pilaObjetos.peek();
+    Cliente cliente = (Cliente)this.pilaObjetos.peek();
     cliente.setNombre(valor);
     } else if ("placa".equals(elementoActual())) {
-        Clientes cliente = (Clientes)this.pilaObjetos.peek();
+        Cliente cliente = (Cliente)this.pilaObjetos.peek();
         cliente.setPlaca(valor);
     } else if ("telefono".equals(elementoActual())) {
-        Clientes cliente = (Clientes)this.pilaObjetos.peek();
+        Cliente cliente = (Cliente)this.pilaObjetos.peek();
         cliente.setTelefono(valor);
     }
     

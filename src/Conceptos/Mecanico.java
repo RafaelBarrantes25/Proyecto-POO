@@ -4,6 +4,7 @@
  */
 package Conceptos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,20 +14,20 @@ import java.util.ArrayList;
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
 */ 
-public class Mecanicos {
+public class Mecanico implements Serializable{
         String identificacion;
         String nombre;
         String puesto;
         ArrayList<String> serviciosValidados;
 
-    public Mecanicos(String identificacion, String nombre, String puesto, ArrayList servicios) {
+    public Mecanico(String identificacion, String nombre, String puesto, ArrayList servicios) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.puesto = puesto;
         this.serviciosValidados = servicios;
     }
     
-    public Mecanicos(){
+    public Mecanico(){
         this.serviciosValidados = new ArrayList<String>();
     }
 

@@ -4,12 +4,12 @@
  */
 package aplicacion;
 
-import Conceptos.Clientes;
+import Conceptos.Cliente;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import ventanas.Escritorio;
+import Presentacion.Escritorio;
 /**
  * Clase main que corre el programa
  * @author Rafael

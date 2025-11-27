@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ventanas;
-import Conceptos.Mecanicos;
-import Conceptos.Servicios;
+package Presentacion;
+import Conceptos.Mecanico;
+import Conceptos.Servicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -21,11 +21,11 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
      * Creates new form VentanaCheckServicios
      */
     
-    Mecanicos mecanico;
-    ArrayList<Mecanicos> mecanicos;
-    ArrayList<Servicios> servicios = new ArrayList<>();
+    Mecanico mecanico;
+    ArrayList<Mecanico> mecanicos;
+    ArrayList<Servicio> servicios = new ArrayList<>();
     
-    public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanicos mecanico, ArrayList<Mecanicos> mecanicos) {
+    public VentanaCheckServicios(java.awt.Dialog parent, boolean modal, Mecanico mecanico, ArrayList<Mecanico> mecanicos) {
         super(parent, modal);
         initComponents();
         this.setSize(512, 384);
@@ -40,7 +40,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
         
         try{
             int y = 32;
-            for(Servicios s: servicios){
+            for(Servicio s: servicios){
                 JCheckBox caja = new JCheckBox();
                 
                 caja.setActionCommand(s.getIdentificacion());

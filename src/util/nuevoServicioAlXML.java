@@ -5,7 +5,7 @@
 
 package util;
 
-import Conceptos.Servicios;
+import Conceptos.Servicio;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +26,7 @@ import org.w3c.dom.Element;
 public class nuevoServicioAlXML {
 
     //Modifica el XML para añadir mecanicos nuevos
-    public static void GuardarServicios(ArrayList<Servicios> servicios, String nombreXML) throws Exception {
+    public static void GuardarServicios(ArrayList<Servicio> servicios, String nombreXML) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.newDocument();
@@ -35,7 +35,7 @@ public class nuevoServicioAlXML {
         Element rootElement = doc.createElement("servicios");
         doc.appendChild(rootElement);
 
-        for (Servicios servicio : servicios) {
+        for (Servicio servicio : servicios) {
 
             Element servicioElement = doc.createElement("servicio");
             servicioElement.setAttribute("id", servicio.getIdentificacion());

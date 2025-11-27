@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package ventanas;
-import Conceptos.Clientes;
+package Presentacion;
+import Conceptos.Cliente;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class ventanaClientes extends javax.swing.JDialog {
 
     
-    ArrayList<Clientes> clientes;
+    ArrayList<Cliente> clientes;
      
     public ventanaClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -60,7 +60,7 @@ public class ventanaClientes extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Clientes c : clientes){
+            for (Cliente c : clientes){
                 Vector<String> fila = new Vector<String>();
                 fila.addElement(c.getId());
                 fila.addElement(c.getNombre());
@@ -74,6 +74,8 @@ public class ventanaClientes extends javax.swing.JDialog {
             this.jTable1.setModel(datos);
 
         }/*catch (FileNotFoundException e) {
+            e.printStackTrace();
+        /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
         }*/finally{
@@ -109,7 +111,6 @@ public class ventanaClientes extends javax.swing.JDialog {
         eliminarClientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
 
         jTable1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -336,7 +337,7 @@ public class ventanaClientes extends javax.swing.JDialog {
             return;
         }
         
-        Clientes clienteNuevo = new Clientes(id,nombre,placa,telefono,email);
+        Cliente clienteNuevo = new Cliente(id,nombre,placa,telefono,email);
         clientes.add(clienteNuevo);
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         
@@ -391,7 +392,7 @@ public class ventanaClientes extends javax.swing.JDialog {
             return;
         }
         
-        Clientes clientePorModificar = clientes.get(filaEscogida);
+        Cliente clientePorModificar = clientes.get(filaEscogida);
         
         String idNuevo = campoID.getText().trim();
         String nombreNuevo = campoNombre.getText().trim();

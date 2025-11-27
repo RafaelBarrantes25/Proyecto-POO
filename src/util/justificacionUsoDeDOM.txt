@@ -1,2 +1,0 @@
-Aplicamos un analizador de XML DOM por varios motivos. En primer lugar, el DOM es más sencillo de implementar y de que modifique el XML, como siempre está cargado en memoria no tiene que realizar varias búsquedas del dato. 
-Que esté cargado en memoria puede verse como una desventaja si son cantidades de datos muy grandes, pero en un taller mecánico, es poco realista que hayan cantidades demasiado grandes de mecánicos, clientes o servicios, por lo que las ventajas en cuanto a almacenamiento de un SAX o DOM en este caso son negligibles.

@@ -4,21 +4,23 @@
  */
 package Conceptos;
 
+import java.io.Serializable;
+
 /**
- * Clase Clientes con atributos y métodos
+ * Clase Cliente con atributos y métodos
  * @author Jose Rafael Barrantes Quesada
  * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
  */
-public class Clientes {
+public class Cliente implements Serializable{
         String id;
         String nombre;
         String placa;
         String telefono;
         String email;
 
-    public Clientes(String id, String nombre, String placa, String telefono, String email) {
+    public Cliente(String id, String nombre, String placa, String telefono, String email) {
         this.id = id;
         this.nombre = nombre;
         this.placa = placa;
@@ -26,7 +28,7 @@ public class Clientes {
         this.email = email;
     }
     
-    public Clientes(){
+    public Cliente(){
         
     }
 

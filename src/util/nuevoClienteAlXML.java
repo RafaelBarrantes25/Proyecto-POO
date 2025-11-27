@@ -5,7 +5,7 @@
 
 package util;
 
-import Conceptos.Clientes;
+import Conceptos.Cliente;
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -26,7 +26,7 @@ import org.w3c.dom.Element;
 public class nuevoClienteAlXML {
 
     //Modifica el XML para añadir clientes nuevos
-    public static void GuardarClientes(ArrayList<Clientes> clientes, String nombreXML) throws Exception {
+    public static void GuardarClientes(ArrayList<Cliente> clientes, String nombreXML) throws Exception {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.newDocument();
@@ -35,7 +35,7 @@ public class nuevoClienteAlXML {
         Element rootElement = doc.createElement("clientes");
         doc.appendChild(rootElement);
 
-        for (Clientes cliente : clientes) {
+        for (Cliente cliente : clientes) {
 
             Element clienteElement = doc.createElement("cliente");
             clienteElement.setAttribute("id", cliente.getId());
