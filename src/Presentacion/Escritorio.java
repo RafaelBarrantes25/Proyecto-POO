@@ -31,11 +31,6 @@ import util.SolicitudOutput;
 */ 
 public class Escritorio extends javax.swing.JFrame {
 
-    ArrayList<Cliente> clientes;
-    ArrayList<Servicio> servicios;
-    ArrayList<Mecanico> mecanicos;
-    ArrayList<Solicitud> solicitudes;
-    ArrayList<Estado> estados;
     ClienteInput clienteInput = new ClienteInput();
     ClienteOutput clienteOutput = new ClienteOutput();
     ServicioInput servicioInput = new ServicioInput();
@@ -393,7 +388,13 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
-        try{        
+        try{
+            ArrayList<Cliente> clientes = new ArrayList<>();
+            ArrayList<Servicio> servicios = new ArrayList<>();
+            ArrayList<Mecanico> mecanicos = new ArrayList<>();
+            ArrayList<Solicitud> solicitudes = new ArrayList<>();
+            ArrayList<Estado> estados = new ArrayList<>();
+    
             clienteInput.abrir();
             servicioInput.abrir();
             mecanicoInput.abrir();
@@ -417,7 +418,7 @@ public class Escritorio extends javax.swing.JFrame {
                 mecanicos.add(mecanico);
                 mecanico = mecanicoInput.leer();
             }
-            /* Aún no están listos
+            
             Solicitud solicitud = solicitudInput.leer();
             while(solicitud != null){
                 solicitudes.add(solicitud);
@@ -428,13 +429,13 @@ public class Escritorio extends javax.swing.JFrame {
             while(estado != null){
                 estados.add(estado);
                 estado = estadoInput.leer();
-            }*/
-            
+            }
+                        
             util.nuevoClienteAlXML.GuardarClientes(clientes,"Export/clientes.xml");
             util.nuevoServicioAlXML.GuardarServicios(servicios,"Export/servicios.xml");
             util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Export/mecanicos.xml");
-            //util.nuevaSolicitudAlXML.GuardarSolicitudes(solicitudes,"Export/solicitudes.xml");
-            //util.nuevoEstadoAlXML.GuardarEstados(estados,"Export/estados.xml");
+            util.nuevaSolicitudAlXML.GuardarSolicitudes(solicitudes,"Export/solicitudes.xml");
+            util.nuevoEstadoAlXML.GuardarEstados(estados,"Export/estados.xml");
             
             clienteInput.cerrar();
             servicioInput.cerrar();
@@ -455,11 +456,11 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExportarActionPerformed
 
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
-        this.clientes = util.ClientesCargadorXML.Cargar("Export/clientes.xml");
-        this.servicios = util.ServiciosCargadorXML.Cargar("Export/servicios.xml");
-        this.mecanicos = util.MecanicosCargadorXML.Cargar("Export/mecanicos.xml");
-        this.solicitudes = util.SolicitudesCargadorXML.Cargar("Export/solicitudes.xml");
-        this.estados = util.EstadosCargadorXML.Cargar("Export/estados.xml");
+        ArrayList<Cliente> clientes = util.ClientesCargadorXML.Cargar("Export/clientes.xml");
+        ArrayList<Servicio> servicios = util.ServiciosCargadorXML.Cargar("Export/servicios.xml");
+        ArrayList<Mecanico> mecanicos = util.MecanicosCargadorXML.Cargar("Export/mecanicos.xml");
+        ArrayList<Solicitud> solicitudes = util.SolicitudesCargadorXML.Cargar("Export/solicitudes.xml");
+        ArrayList<Estado> estados = util.EstadosCargadorXML.Cargar("Export/estados.xml");
         
         try{
             clienteOutput.abrir();
@@ -497,12 +498,6 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnImportarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        this.clientes = null;
-        this.servicios = null;
-        this.mecanicos = null;
-        this.solicitudes = null;
-        this.estados = null;
-
         try{
             clienteOutput.abrir();
             servicioOutput.abrir();

@@ -18,22 +18,4 @@
         <placa>300</placa>
         <email>pedro.a@gmail</email>
     </cliente>
-    <cliente id="300001111">
-        <nombre>Juan Perez</nombre>
-        <telefono>7777-1000</telefono>
-        <placa>100</placa>
-        <email>juan.p@gmail</email>
-    </cliente>
-    <cliente id="300002222">
-        <nombre>Ana Rojas</nombre>
-        <telefono>7777-2000</telefono>
-        <placa>200</placa>
-        <email>ana.r@gmail</email>
-    </cliente>
-    <cliente id="300003333">
-        <nombre>Pedro Arnaez</nombre>
-        <telefono>7777-3000</telefono>
-        <placa>300</placa>
-        <email>pedro.a@gmail</email>
-    </cliente>
 </clientes>

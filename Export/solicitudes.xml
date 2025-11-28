@@ -10,6 +10,7 @@
         <otros_servicios>
             <id>000</id>
             <id>001</id>
+            <id> </id>
         </otros_servicios>
-        </solicitud>
+    </solicitud>
 </solicitudes>
