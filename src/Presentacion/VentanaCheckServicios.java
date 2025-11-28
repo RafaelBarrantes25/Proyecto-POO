@@ -36,7 +36,7 @@ public class VentanaCheckServicios extends javax.swing.JDialog{
     }
 
     void llenarLista(){
-        servicios = util.ServiciosCargadorXML.Cargar("Data/servicios.xml");
+        servicios = util.ServiciosCargadorXML.Cargar("Export/servicios.xml");
         
         try{
             int y = 32;

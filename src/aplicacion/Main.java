@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import Presentacion.Escritorio;
 /**
  * Clase main que corre el programa
- * @author Rafael
+ * @author Jose Rafael Barrantes Quesada
  * Carné: 2025122443
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826

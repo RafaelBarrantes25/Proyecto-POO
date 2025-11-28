@@ -10,5 +10,13 @@ package Conceptos;
  * Carné: 2025085826
  */
 public class Estado {
-    //No sé todavía que debe haber aquí
+    String identificacion;
+    String nombre;
+
+    public Estado(String identificacion, String nombre) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+    }
+    
+    public Estado(){}
 }

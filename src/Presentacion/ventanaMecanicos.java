@@ -45,7 +45,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     private void llenarTabla(){
       
         try {
-            mecanicos = util.MecanicosCargadorXML.Cargar("Data/mecanicos.xml");
+            mecanicos = util.MecanicosCargadorXML.Cargar("Export/mecanicos.xml");
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();

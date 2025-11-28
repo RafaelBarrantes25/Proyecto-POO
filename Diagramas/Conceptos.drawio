@@ -1,6 +1,6 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" modified="2025-11-27T21:48:08.715Z" version="23.0.2" etag="2PhBfzbv-dIh-KlCDbku" type="device">
   <diagram name="Conceptos" id="uC0wzHNv45-vwn3pKA7G">
-    <mxGraphModel dx="1783" dy="1111" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="990" dy="1544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -37,8 +37,41 @@
         <mxCell id="ZpJSnqIhMPmXYEyuzB7u-2" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;*&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="870" y="350" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HY7ZyCOnRkbHr1wGWgiG-1" value="Estudiante: Jose Rafael Barrantes Quesada&lt;div&gt;Carné:&amp;nbsp;2025122443&lt;/div&gt;&lt;div&gt;-------------------------------------------------------------&lt;/div&gt;&lt;div&gt;Estudiante: Ian Alexander Valerio Steller&lt;/div&gt;&lt;div&gt;Carné: 2025085826&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+        <mxCell id="HY7ZyCOnRkbHr1wGWgiG-1" value="Estudiante: Jose Rafael Barrantes Quesada&lt;div&gt;Carné:&amp;nbsp;2025122443&lt;/div&gt;&lt;div&gt;-------------------------------------------------------------&lt;/div&gt;&lt;div&gt;Estudiante: Ian Alexander Valerio Steller&lt;/div&gt;&lt;div&gt;Carné: 2025085826&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
           <mxGeometry x="40" y="40" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Solicitud&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="290" y="730" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-2" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String identificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String placa&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String observaciones&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="290" y="760" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-3" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 14px; background-color: initial;&quot;&gt;String getPlaca&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setPlaca&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getEemail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setEmail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String toString&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void solicitar&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void atender&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void consultar&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="290" y="860" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-4" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Estado&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="730" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-5" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String identificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String nombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String placa&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String telefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String email&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="761" width="230" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-6" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setIdentificacion&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setNombre&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getPlaca&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setPlaca&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setTelefono&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String getEemail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;void setEmail&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;String toString&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="700" y="858" width="230" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.867;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;" edge="1" parent="1" source="DiMNoyZRUlCSMilrHkbA-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="785" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="910" y="588" />
+              <mxPoint x="820" y="588" />
+              <mxPoint x="820" y="680" />
+              <mxPoint x="600" y="680" />
+              <mxPoint x="600" y="785" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4_R3D9rvlLn-XD2uMSrb-8" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;*&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="870" y="570" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
