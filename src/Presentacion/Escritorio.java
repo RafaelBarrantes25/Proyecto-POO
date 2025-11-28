@@ -4,6 +4,25 @@
  */
 package Presentacion;
 
+import Conceptos.Cliente;
+import Conceptos.Estado;
+import Conceptos.Mecanico;
+import Conceptos.Servicio;
+import Conceptos.Solicitud;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import util.ClienteInput;
+import util.ClienteOutput;
+import util.EstadoInput;
+import util.EstadoOutput;
+import util.MecanicoInput;
+import util.MecanicoOutput;
+import util.ServicioInput;
+import util.ServicioOutput;
+import util.SolicitudInput;
+import util.SolicitudOutput;
+
 /**
  * @author Jose Rafael Barrantes Quesada
  * Carné: 2025122443
@@ -12,6 +31,22 @@ package Presentacion;
 */ 
 public class Escritorio extends javax.swing.JFrame {
 
+    ArrayList<Cliente> clientes;
+    ArrayList<Servicio> servicios;
+    ArrayList<Mecanico> mecanicos;
+    ArrayList<Solicitud> solicitudes;
+    ArrayList<Estado> estados;
+    ClienteInput clienteInput = new ClienteInput();
+    ClienteOutput clienteOutput = new ClienteOutput();
+    ServicioInput servicioInput = new ServicioInput();
+    ServicioOutput servicioOutput = new ServicioOutput();
+    MecanicoInput mecanicoInput = new MecanicoInput();
+    MecanicoOutput mecanicoOutput = new MecanicoOutput();
+    SolicitudInput solicitudInput = new SolicitudInput();
+    SolicitudOutput solicitudOutput = new SolicitudOutput();
+    EstadoInput estadoInput = new EstadoInput();
+    EstadoOutput estadoOutput = new EstadoOutput();
+    
     /**
      * Creates new form Escritorio
      */
@@ -19,7 +54,7 @@ public class Escritorio extends javax.swing.JFrame {
         this.setTitle("ADMINISTRADOR DEL TALLER ~ALEX BARBOZA~");
         initComponents();
         this.setSize(1024,768);
-        setExtendedState(Escritorio.MAXIMIZED_BOTH); //Ventana maximizada
+        //setExtendedState(Escritorio.MAXIMIZED_BOTH); //Ventana maximizada
         
         setLayout(null);
         botonClientes.setBounds(80, 524, 144, 144);
@@ -33,6 +68,7 @@ public class Escritorio extends javax.swing.JFrame {
         btnImportar.setBounds(WIDTH, WIDTH, 75, 16);
         btnLimpiar.setBounds(WIDTH, WIDTH, 150, 16);
         panelAcciones.setBounds(352, 128, 320, 56);
+        txtUtil.setBounds(384, 100, 32, 32);
         jProgressBar1.setBounds(80, 460, 864, 16);
         jProgressBar1.setIndeterminate(true);
         btnConsultar.setBounds(80, 256, 144, 144);
@@ -70,6 +106,7 @@ public class Escritorio extends javax.swing.JFrame {
         txtAtender = new javax.swing.JLabel();
         txtSolicitar = new javax.swing.JLabel();
         txtConsultar = new javax.swing.JLabel();
+        txtUtil = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -230,6 +267,9 @@ public class Escritorio extends javax.swing.JFrame {
         txtConsultar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtConsultar.setText("Consultar");
 
+        txtUtil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtUtil.setText("Util");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -269,7 +309,9 @@ public class Escritorio extends javax.swing.JFrame {
                                     .addComponent(txtAtender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAtender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUtil))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -278,9 +320,11 @@ public class Escritorio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(titulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUtil)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+                .addGap(104, 104, 104)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -290,7 +334,7 @@ public class Escritorio extends javax.swing.JFrame {
                     .addComponent(txtAtender, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,15 +393,141 @@ public class Escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
-        // TODO add your handling code here:
+        try{        
+            clienteInput.abrir();
+            servicioInput.abrir();
+            mecanicoInput.abrir();
+            solicitudInput.abrir();
+            estadoInput.abrir();  
+            
+            Cliente cliente = clienteInput.leer();
+            while(cliente != null){
+                clientes.add(cliente);
+                cliente = clienteInput.leer();
+            }
+            
+            Servicio servicio = servicioInput.leer();
+            while(servicio != null){
+                servicios.add(servicio);
+                servicio = servicioInput.leer();
+            }
+            
+            Mecanico mecanico = mecanicoInput.leer();
+            while(mecanico != null){
+                mecanicos.add(mecanico);
+                mecanico = mecanicoInput.leer();
+            }
+            /* Aún no están listos
+            Solicitud solicitud = solicitudInput.leer();
+            while(solicitud != null){
+                solicitudes.add(solicitud);
+                solicitud = solicitudInput.leer();
+            }
+            
+            Estado estado = estadoInput.leer();
+            while(estado != null){
+                estados.add(estado);
+                estado = estadoInput.leer();
+            }*/
+            
+            util.nuevoClienteAlXML.GuardarClientes(clientes,"Export/clientes.xml");
+            util.nuevoServicioAlXML.GuardarServicios(servicios,"Export/servicios.xml");
+            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Export/mecanicos.xml");
+            //util.nuevaSolicitudAlXML.GuardarSolicitudes(solicitudes,"Export/solicitudes.xml");
+            //util.nuevoEstadoAlXML.GuardarEstados(estados,"Export/estados.xml");
+            
+            clienteInput.cerrar();
+            servicioInput.cerrar();
+            mecanicoInput.cerrar();
+            solicitudInput.cerrar();
+            estadoInput.cerrar();         
+            
+        } catch(IOException e){
+            System.out.println("Error escribiendo en import");
+            e.printStackTrace();
+
+        } catch (Exception e){
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Error al modificar un archivo" + e.getMessage(), 
+                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        } 
     }//GEN-LAST:event_btnExportarActionPerformed
 
     private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
-        // TODO add your handling code here:
+        this.clientes = util.ClientesCargadorXML.Cargar("Export/clientes.xml");
+        this.servicios = util.ServiciosCargadorXML.Cargar("Export/servicios.xml");
+        this.mecanicos = util.MecanicosCargadorXML.Cargar("Export/mecanicos.xml");
+        this.solicitudes = util.SolicitudesCargadorXML.Cargar("Export/solicitudes.xml");
+        this.estados = util.EstadosCargadorXML.Cargar("Export/estados.xml");
+        
+        try{
+            clienteOutput.abrir();
+            servicioOutput.abrir();
+            mecanicoOutput.abrir();
+            solicitudOutput.abrir();
+            estadoOutput.abrir();  
+            
+            for(Cliente cliente: clientes){
+                clienteOutput.escribir(cliente);
+            }
+            for(Servicio servicio: servicios){
+                servicioOutput.escribir(servicio);
+            }
+            for(Mecanico mecanico: mecanicos){
+                mecanicoOutput.escribir(mecanico);
+            }
+            for(Solicitud solicitud: solicitudes){
+                solicitudOutput.escribir(solicitud);
+            }
+            for(Estado estado: estados){
+                estadoOutput.escribir(estado);
+            }
+            
+            clienteOutput.cerrar();
+            servicioOutput.cerrar();
+            mecanicoOutput.cerrar();
+            solicitudOutput.cerrar();
+            estadoOutput.cerrar();         
+            
+        } catch(IOException e){
+            System.out.println("Error escribiendo en import");
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnImportarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        this.clientes = null;
+        this.servicios = null;
+        this.mecanicos = null;
+        this.solicitudes = null;
+        this.estados = null;
+
+        try{
+            clienteOutput.abrir();
+            servicioOutput.abrir();
+            mecanicoOutput.abrir();
+            solicitudOutput.abrir();
+            estadoOutput.abrir();  
+            
+            File clientesDat = new File("Clientes.dat");
+            clienteOutput.escribir(null);
+            servicioOutput.escribir(null);
+            mecanicoOutput.escribir(null);
+            solicitudOutput.escribir(null);
+            estadoOutput.escribir(null);
+
+            clienteOutput.cerrar();
+            servicioOutput.cerrar();
+            mecanicoOutput.cerrar();
+            solicitudOutput.cerrar();
+            estadoOutput.cerrar();         
+            
+        } catch(IOException e){
+            System.out.println("Error escribiendo en limpiar");
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_btnLimpiarActionPerformed
       
     /**
@@ -414,5 +584,6 @@ public class Escritorio extends javax.swing.JFrame {
     private javax.swing.JLabel txtAtender;
     private javax.swing.JLabel txtConsultar;
     private javax.swing.JLabel txtSolicitar;
+    private javax.swing.JLabel txtUtil;
     // End of variables declaration//GEN-END:variables
 }

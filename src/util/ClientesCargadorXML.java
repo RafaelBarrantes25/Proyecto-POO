@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
  * @author Ian Alexander Valerio Steller
  * Carné: 2025085826
 */ 
-public class CargadorXML {
+public class ClientesCargadorXML {
 
     private static String getValue(String etiqueta, Element elemento) {
         NodeList nodos = elemento.getElementsByTagName(etiqueta).item(0).getChildNodes();

@@ -264,7 +264,7 @@ public class ventanaServicios extends javax.swing.JDialog {
     //guarda el mecanico en el xml
     private void guardarServicio(){
         try{
-            util.nuevoServicioAlXML.GuardarServicios(servicios,"Data/servicios.xml");
+            util.nuevoServicioAlXML.GuardarServicios(servicios,"Export/servicios.xml");
             limpiarCampos();
           
         } catch (Exception e){

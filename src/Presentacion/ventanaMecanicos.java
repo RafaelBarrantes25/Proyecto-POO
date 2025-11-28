@@ -277,7 +277,7 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     //guarda el mecanico en el xml
     private void guardarMecanico(){
         try{
-            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Data/mecanicos.xml");
+            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Export/mecanicos.xml");
             limpiarCampos();
           
         } catch (Exception e){

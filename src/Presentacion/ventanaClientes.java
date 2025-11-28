@@ -46,7 +46,7 @@ public class ventanaClientes extends javax.swing.JDialog {
     private void llenarTabla(){
       
         try {
-            clientes = util.CargadorXML.Cargar("Export/clientes.xml");
+            clientes = util.ClientesCargadorXML.Cargar("Export/clientes.xml");
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -375,7 +375,7 @@ public class ventanaClientes extends javax.swing.JDialog {
     //guarda el cliente en el xml
     private void guardarCliente(){
         try{
-            util.nuevoClienteAlXML.GuardarClientes(clientes,"Data/clientes.xml");
+            util.nuevoClienteAlXML.GuardarClientes(clientes,"Export/clientes.xml");
             limpiarCampos();
           
         } catch (Exception e){

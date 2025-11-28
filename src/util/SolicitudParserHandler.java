@@ -1,0 +1,105 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package util;
+
+import Conceptos.Solicitud;
+import java.util.ArrayList;
+import java.util.Stack;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+/**
+ * @author Jose Rafael Barrantes Quesada
+ * Carné: 2025122443
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
+ */
+public class SolicitudParserHandler extends DefaultHandler{
+    ArrayList<Solicitud> solicitudes = new ArrayList<>();
+    Stack pilaElementos = new Stack();
+    Stack pilaObjetos = new Stack();
+    
+    @Override
+    public void startDocument() throws SAXException{
+    }
+
+    @Override
+    public void endDocument() throws SAXException{
+    }
+
+    @Override
+    public void startElement(String uri, String localName, String qName,
+                             Attributes attributes) throws SAXException{
+        this.pilaElementos.push(qName);
+
+        if ("solicitud".equals(qName)){
+            Solicitud solicitud = new Solicitud();
+           this.pilaObjetos.push(solicitud);
+    
+          String id = attributes.getValue("id");
+          solicitud.setIdentificacion(id);
+            this.pilaObjetos.push(solicitud);
+        }
+}
+
+    @Override
+    public void endElement(String uri, String localName, String qName) throws SAXException{
+        this.pilaElementos.pop();
+
+        if ("solicitud".equals(qName)) {
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.pop();
+            this.solicitudes.add(solicitud);
+        }
+    }
+
+    @Override
+    public void characters(char[] ch, int start, int length) throws SAXException{
+        String valor = new String(ch, start, length).trim();
+
+        /* Si es espacios en blanco, terminar */
+        if (valor.length() == 0){
+            return;
+        }
+
+        if("placa".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setPlaca(valor);
+            
+        } else if("servicio".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setServicio(valor);
+            
+        } if("cliente".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setCliente(valor);
+            
+        } else if("mecanico".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setMecanico(valor);
+            
+        } else if("estado".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setEstado(valor);
+            
+        } else if("observaciones".equals(elementoActual())){
+            Solicitud solicitud = (Solicitud)this.pilaObjetos.peek();
+            solicitud.setObservaciones(valor);
+            
+        }
+        
+        //Tal vez haya errores con otros_servicios, si no hay este comentario se perderá entre la multitud
+    }
+
+    private String elementoActual()
+    {
+        return (String)this.pilaElementos.peek();
+    }
+
+    public ArrayList getSolicitudes()
+    {
+        return solicitudes;
+    }
+}

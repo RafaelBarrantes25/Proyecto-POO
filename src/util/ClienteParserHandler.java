@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package util;
+
 import Conceptos.Cliente;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -11,10 +12,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
-  * @author Jose Rafael Barrantes Quesada
- * Carné: 2025122443
- * @author Ian Alexander Valerio Steller
- * Carné: 2025085826
+* @author Jose Rafael Barrantes Quesada
+* Carné: 2025122443
+* @author Ian Alexander Valerio Steller
+* Carné: 2025085826
 */ 
 public class ClienteParserHandler extends DefaultHandler {
     ArrayList<Cliente> clientes = new ArrayList<>();
