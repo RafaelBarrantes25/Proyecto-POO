@@ -4,9 +4,12 @@
  */
 package Presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
- *
- * @author Ian
+ * Ventana para realizar una solicitud
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
  */
 public class VentanaSolicitar extends javax.swing.JDialog {
 
@@ -15,6 +18,7 @@ public class VentanaSolicitar extends javax.swing.JDialog {
      */
     public VentanaSolicitar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setTitle("Crear Solicitud de Servicio");
         initComponents();
     }
 
@@ -27,21 +31,156 @@ public class VentanaSolicitar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        txtPlaca = new javax.swing.JLabel();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        espacioPlaca = new javax.swing.JTextField();
+        txtCliente = new javax.swing.JLabel();
+        txtObservaciones = new javax.swing.JLabel();
+        cajaClientes = new javax.swing.JComboBox<>();
+        espacioObservaciones = new javax.swing.JTextField();
+        txtServicios = new javax.swing.JLabel();
+        cajaServicios = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        comentarioEnInterfazGrafica = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
+
+        txtPlaca.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtPlaca.setText("Placa");
+
+        btnCancelar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setText("Guardar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        espacioPlaca.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        txtCliente.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtCliente.setText("Cliente");
+
+        txtObservaciones.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtObservaciones.setText("Observaciones");
+
+        cajaClientes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        espacioObservaciones.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        espacioObservaciones.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        espacioObservaciones.setText("Este espacio está destinado a comentarios entre el mecánico y el cliente");
+        espacioObservaciones.setAlignmentX(0.0F);
+        espacioObservaciones.setAlignmentY(0.0F);
+
+        txtServicios.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtServicios.setText("Tipo de Servicio");
+
+        cajaServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        comentarioEnInterfazGrafica.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
+        comentarioEnInterfazGrafica.setText("<--- No sé que hace este botón");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtObservaciones)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPlaca)
+                            .addComponent(txtCliente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cajaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtServicios)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cajaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(comentarioEnInterfazGrafica)))
+                                .addGap(112, 112, 112))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(espacioObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 94, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cajaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtServicios)
+                    .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPlaca))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCliente)
+                    .addComponent(cajaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(comentarioEnInterfazGrafica))
+                .addGap(67, 67, 67)
+                .addComponent(txtObservaciones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(espacioObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        javax.swing.JOptionPane.showMessageDialog(this, "Su solicitud ha sido ingresada exitosamente,\nNúmero _____" + "", "Número de Servicio", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +225,18 @@ public class VentanaSolicitar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cajaClientes;
+    private javax.swing.JComboBox<String> cajaServicios;
+    private javax.swing.JLabel comentarioEnInterfazGrafica;
+    private javax.swing.JTextField espacioObservaciones;
+    private javax.swing.JTextField espacioPlaca;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel txtCliente;
+    private javax.swing.JLabel txtObservaciones;
+    private javax.swing.JLabel txtPlaca;
+    private javax.swing.JLabel txtServicios;
     // End of variables declaration//GEN-END:variables
 }

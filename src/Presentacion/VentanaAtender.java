@@ -4,18 +4,24 @@
  */
 package Presentacion;
 
+import Conceptos.Mecanico;
+
 /**
- *
- * @author Ian
+ * Ventana para atender sobre una solicitud
+ * @author Ian Alexander Valerio Steller
+ * Carné: 2025085826
  */
 public class VentanaAtender extends javax.swing.JDialog {
 
     /**
      * Creates new form VentanaAtender
      */
-    public VentanaAtender(java.awt.Frame parent, boolean modal) {
+    public VentanaAtender(java.awt.Frame parent, boolean modal) {       
         super(parent, modal);
+        this.setTitle("Atender Solicitudes de Servicio");
         initComponents();
+        
+        this.cajaTipoServicio.setEnabled(false);
     }
 
     /**
@@ -27,21 +33,227 @@ public class VentanaAtender extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtNumServicio = new javax.swing.JLabel();
+        cajaNumServicio = new javax.swing.JComboBox<>();
+        btnCancelar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        txtTipoServicio = new javax.swing.JLabel();
+        cajaTipoServicio = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        cajaMecanicos = new javax.swing.JComboBox<>();
+        txtPlaca = new javax.swing.JLabel();
+        espacioPlaca = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JLabel();
+        cajaEstado = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        txtObservaciones = new javax.swing.JLabel();
+        txtOtrosServicios = new javax.swing.JLabel();
+        panelOtrosServicios = new javax.swing.JPanel();
+        btnMas = new javax.swing.JButton();
+        btnMenos = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1024, 768));
+        setMinimumSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+
+        txtNumServicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtNumServicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        txtNumServicio.setText("Número de Servicio:");
+
+        cajaNumServicio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaNumServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnCancelar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnSalvar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnSalvar.setText("Guardar");
+
+        txtTipoServicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtTipoServicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        txtTipoServicio.setText("Tipo de Servicio:");
+
+        cajaTipoServicio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaTipoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel1.setText("Mecánico:");
+
+        cajaMecanicos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaMecanicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtPlaca.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtPlaca.setText("Placa:");
+
+        espacioPlaca.setEditable(false);
+        espacioPlaca.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        espacioPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                espacioPlacaActionPerformed(evt);
+            }
+        });
+
+        txtEstado.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtEstado.setText("Estado:");
+
+        cajaEstado.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jTextField1.setText("Este espacio está destinado a comentarios entre el mecánico y el cliente");
+
+        txtObservaciones.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        txtObservaciones.setText("Observaciones:");
+
+        txtOtrosServicios.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtOtrosServicios.setText("Otros Servicios (adicionales):");
+
+        panelOtrosServicios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        javax.swing.GroupLayout panelOtrosServiciosLayout = new javax.swing.GroupLayout(panelOtrosServicios);
+        panelOtrosServicios.setLayout(panelOtrosServiciosLayout);
+        panelOtrosServiciosLayout.setHorizontalGroup(
+            panelOtrosServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 512, Short.MAX_VALUE)
+        );
+        panelOtrosServiciosLayout.setVerticalGroup(
+            panelOtrosServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 135, Short.MAX_VALUE)
+        );
+
+        btnMas.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnMas.setText("+");
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
+
+        btnMenos.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnMenos.setText("-");
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtObservaciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNumServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTipoServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cajaTipoServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(cajaNumServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPlaca)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cajaMecanicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEstado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cajaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1))
+                .addGap(233, 233, 233))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtOtrosServicios)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(panelOtrosServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnMas, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cajaNumServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPlaca)
+                        .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumServicio))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTipoServicio)
+                    .addComponent(cajaTipoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cajaMecanicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cajaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEstado)))
+                .addGap(55, 55, 55)
+                .addComponent(txtObservaciones)
+                .addGap(5, 5, 5)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtOtrosServicios)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelOtrosServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnSalvar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnMas, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void espacioPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espacioPlacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_espacioPlacaActionPerformed
+
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMasActionPerformed
+
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMenosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,5 +298,23 @@ public class VentanaAtender extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnMas;
+    private javax.swing.JButton btnMenos;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cajaEstado;
+    private javax.swing.JComboBox<String> cajaMecanicos;
+    private javax.swing.JComboBox<String> cajaNumServicio;
+    private javax.swing.JComboBox<String> cajaTipoServicio;
+    private javax.swing.JTextField espacioPlaca;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel panelOtrosServicios;
+    private javax.swing.JLabel txtEstado;
+    private javax.swing.JLabel txtNumServicio;
+    private javax.swing.JLabel txtObservaciones;
+    private javax.swing.JLabel txtOtrosServicios;
+    private javax.swing.JLabel txtPlaca;
+    private javax.swing.JLabel txtTipoServicio;
     // End of variables declaration//GEN-END:variables
 }
