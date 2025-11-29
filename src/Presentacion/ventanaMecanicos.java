@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Presentacion;
+import Conceptos.Cliente;
 import Conceptos.Mecanico;
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,9 +44,19 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     }
 
     private void llenarTabla(){
-      
+              mecanicos = new ArrayList<>();
         try {
-            mecanicos = util.MecanicosCargadorXML.Cargar("Export/mecanicos.xml");
+            //Esto usa el archivo de input para meterlo en la lista de clientes
+            util.MecanicoInput inputDeMecanicos = new util.MecanicoInput();
+            //Abre el archivo
+            inputDeMecanicos.abrir();
+            
+            Mecanico m1;
+                while ((m1 = inputDeMecanicos.leer()) != null) {
+            mecanicos.add(m1);
+            }
+
+            inputDeMecanicos.cerrar();
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -58,19 +69,20 @@ public class ventanaMecanicos extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Mecanico m : mecanicos){
+            for (Mecanico m2 : mecanicos){
                 Vector<String> fila = new Vector<String>();
-                fila.addElement(m.getIdentificacion());
-                fila.addElement(m.getNombre());
-                fila.addElement(m.getPuesto());
+                fila.addElement(m2.getIdentificacion());
+                fila.addElement(m2.getNombre());
+                fila.addElement(m2.getPuesto());
             
                 filas.addElement(fila);
             }
             DefaultTableModel datos = new DefaultTableModel(filas,columnas);
             this.tablaMecanicos.setModel(datos);
 
-        }/*catch (FileNotFoundException e) {
+        }catch (Exception e) {
             e.printStackTrace();
+        }
         /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
@@ -277,7 +289,12 @@ public class ventanaMecanicos extends javax.swing.JDialog {
     //guarda el mecanico en el xml
     private void guardarMecanico(){
         try{
-            util.nuevoMecanicoAlXML.GuardarMecanicos(mecanicos,"Export/mecanicos.xml");
+            util.MecanicoOutput salidaDeMecanicos = new util.MecanicoOutput();
+            salidaDeMecanicos.abrir();
+            for(Mecanico m : mecanicos){
+                salidaDeMecanicos.escribir(m);
+            }
+            salidaDeMecanicos.cerrar();
             limpiarCampos();
           
         } catch (Exception e){

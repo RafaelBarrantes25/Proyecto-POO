@@ -7,6 +7,7 @@ import Conceptos.Cliente;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import util.ClienteOutput;
 /**
  * Ventana con una tabla de los clientes del establecimiento
  * @author Jose Rafael Barrantes Quesada
@@ -44,9 +45,21 @@ public class ventanaClientes extends javax.swing.JDialog {
     }
 
     private void llenarTabla(){
-      
+        clientes = new ArrayList<>();
         try {
-            clientes = util.ClientesCargadorXML.Cargar("Export/clientes.xml");
+            //Esto usa el archivo de input para meterlo en la lista de clientes
+            util.ClienteInput inputDeClientes = new util.ClienteInput();
+            //Abre el archivo
+            inputDeClientes.abrir();
+            
+            Cliente c1;
+                while ((c1 = inputDeClientes.leer()) != null) {
+            clientes.add(c1);
+            }
+
+            inputDeClientes.cerrar();
+            
+            
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -60,21 +73,22 @@ public class ventanaClientes extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Cliente c : clientes){
+            for (Cliente c2 : clientes){
                 Vector<String> fila = new Vector<String>();
-                fila.addElement(c.getId());
-                fila.addElement(c.getNombre());
-                fila.addElement(c.getTelefono());
-                fila.addElement(c.getPlaca());
-                fila.addElement(c.getEmail());
+                fila.addElement(c2.getId());
+                fila.addElement(c2.getNombre());
+                fila.addElement(c2.getTelefono());
+                fila.addElement(c2.getPlaca());
+                fila.addElement(c2.getEmail());
             
                 filas.addElement(fila);
             }
             DefaultTableModel datos = new DefaultTableModel(filas,columnas);
             this.jTable1.setModel(datos);
 
-        }/*catch (FileNotFoundException e) {
+        }catch (Exception e) {
             e.printStackTrace();
+        }
         /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
@@ -375,7 +389,12 @@ public class ventanaClientes extends javax.swing.JDialog {
     //guarda el cliente en el xml
     private void guardarCliente(){
         try{
-            util.nuevoClienteAlXML.GuardarClientes(clientes,"Export/clientes.xml");
+            util.ClienteOutput salidaDeClientes = new util.ClienteOutput();
+            salidaDeClientes.abrir();
+            for(Cliente c : clientes){
+                salidaDeClientes.escribir(c);
+            }
+            salidaDeClientes.cerrar();
             limpiarCampos();
           
         } catch (Exception e){

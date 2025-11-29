@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package Presentacion;
+import Conceptos.Cliente;
 import Conceptos.Servicio;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,9 +42,19 @@ public class ventanaServicios extends javax.swing.JDialog {
     }
 
     private void llenarTabla(){
-      
+        servicios = new ArrayList<>();
         try {
-            servicios = util.ServiciosCargadorXML.Cargar("Export/servicios.xml");
+            //Esto usa el archivo de input para meterlo en la lista de clientes
+            util.ServicioInput inputDeServicios = new util.ServicioInput();
+            //Abre el archivo
+            inputDeServicios.abrir();
+            
+            Servicio s1;
+                while ((s1 = inputDeServicios.leer()) != null) {
+            servicios.add(s1);
+            }
+
+            inputDeServicios.cerrar();
             
             //Columnas de la tabla
             Vector<String> columnas = new Vector<String>();
@@ -56,19 +67,20 @@ public class ventanaServicios extends javax.swing.JDialog {
             //Filas de la tabla
             Vector<Vector> filas = new Vector<Vector>();
         
-            for (Servicio s : servicios){
+            for (Servicio s2 : servicios){
                 Vector<String> fila = new Vector<String>();
-                fila.addElement(s.getIdentificacion());
-                fila.addElement(s.getNombre());
-                fila.addElement("₡" + s.getPrecio());
+                fila.addElement(s2.getIdentificacion());
+                fila.addElement(s2.getNombre());
+                fila.addElement("₡" + s2.getPrecio());
             
                 filas.addElement(fila);
             }
             DefaultTableModel datos = new DefaultTableModel(filas,columnas);
             this.tablaServicios.setModel(datos);
 
-        }/*catch (FileNotFoundException e) {
+        }catch (Exception e) {
             e.printStackTrace();
+        }
         /*catch (FileNotFoundException e) {
             e.printStackTrace();
         
@@ -264,7 +276,12 @@ public class ventanaServicios extends javax.swing.JDialog {
     //guarda el mecanico en el xml
     private void guardarServicio(){
         try{
-            util.nuevoServicioAlXML.GuardarServicios(servicios,"Export/servicios.xml");
+            util.ServicioOutput salidaDeServicios = new util.ServicioOutput();
+            salidaDeServicios.abrir();
+            for(Servicio s : servicios){
+                salidaDeServicios.escribir(s);
+            }
+            salidaDeServicios.cerrar();
             limpiarCampos();
           
         } catch (Exception e){
