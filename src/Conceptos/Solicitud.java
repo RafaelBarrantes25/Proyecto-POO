@@ -22,6 +22,9 @@ public class Solicitud implements Serializable{
     String estado;
     ArrayList<String> otrosServicios;
 
+    
+    
+    
     public Solicitud(String identificacion, String placa, String servicio, String cliente, String observaciones, String mecanico, String estado, ArrayList<String> otrosServicios) {
         this.identificacion = identificacion;
         this.placa = placa;
@@ -31,6 +34,19 @@ public class Solicitud implements Serializable{
         this.mecanico = mecanico;
         this.estado = estado;
         this.otrosServicios = otrosServicios;
+    }
+    
+    //Una version simplificada del constructor, porque al crear inicialmente una solicitud,
+    //hay datos que se asignan hasta despues
+    public Solicitud(String placa, String cliente, String servicio, String observaciones,String identificacion){
+        this.placa = placa;
+        this.servicio = servicio;
+        this.cliente = cliente;
+        this.observaciones = observaciones;
+        this.identificacion = identificacion;
+        this.mecanico = "Por definir";
+        this.estado = "Por definir";
+        this.otrosServicios = new ArrayList<>();
     }
     
     public Solicitud(){}
