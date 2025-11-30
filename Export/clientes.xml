@@ -18,4 +18,10 @@
         <placa>300</placa>
         <email>pedro.a@gmail</email>
     </cliente>
+    <cliente id="401">
+        <nombre>Juana de Arco</nombre>
+        <telefono>10001</telefono>
+        <placa>300954</placa>
+        <email>juanadearco@gmail.com</email>
+    </cliente>
 </clientes>

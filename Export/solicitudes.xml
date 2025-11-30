@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <solicitudes>
-    <solicitud id="000000000">
-        <placa> </placa>
-        <servicio> </servicio>
-        <cliente> </cliente>
-        <mecanico> </mecanico>
-        <estado> </estado>
-        <observaciones> </observaciones>
+    <solicitud id="300003333">
+        <placa>3</placa>
+        <servicio>Mecanica Motor</servicio>
+        <cliente>Pedro Arnaez</cliente>
+        <mecanico>Por definir</mecanico>
+        <estado>ewffffsfsd</estado>
+        <observaciones>Por definir</observaciones>
         <otros_servicios>
-            <id>000</id>
-            <id>001</id>
-            <id> </id>
-            <id> </id>
+            <id>Mecanica Motor</id>
         </otros_servicios>
+    </solicitud>
+    <solicitud id="300002222">
+        <placa>asddas</placa>
+        <servicio>Cambio Aceite 20</servicio>
+        <cliente>Ana Rojas</cliente>
+        <mecanico>Por definir</mecanico>
+        <estado>Por definir</estado>
+        <observaciones>sffewf</observaciones>
+        <otros_servicios/>
+    </solicitud>
+    <solicitud id="300002222">
+        <placa>fefsfsf</placa>
+        <servicio>Balanceo de llantas</servicio>
+        <cliente>Ana Rojas</cliente>
+        <mecanico>Por definir</mecanico>
+        <estado>Por definir</estado>
+        <observaciones>seffafefef</observaciones>
+        <otros_servicios/>
     </solicitud>
 </solicitudes>

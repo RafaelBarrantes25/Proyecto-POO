@@ -5,6 +5,7 @@
 package util;
 
 import Conceptos.Solicitud;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -19,8 +20,19 @@ public class SolicitudOutput {
     ObjectOutputStream salida;
     
     public void abrir() throws IOException{
-        archivo = new FileOutputStream("Data/Solicitudes.dat");
-        salida = new ObjectOutputStream(archivo);
+        
+        //Esto para revisar que el archivo exista
+        File revisarArchivo = new File("Data/Solicitudes.dat");
+        boolean revisarExiste = revisarArchivo.exists();
+        
+        archivo = new FileOutputStream("Data/Solicitudes.dat",true);
+        
+        if(revisarExiste == false || revisarArchivo.length() == 0){
+            salida = new ObjectOutputStream(archivo);
+        } else {
+            salida = new AnadirObjectOutputStream(archivo);
+        }
+     
     }
     
     public void cerrar() throws IOException{
@@ -33,5 +45,24 @@ public class SolicitudOutput {
         if(salida != null){
             salida.writeObject(solicitud);
         }
+    }
+}
+
+
+//Hay que hacer otro metodo debido a que como este no carga toda la lista cada
+//vez, sobreescribe valores al anadir algo nuevo
+
+//Un comentario en este link explica lo de appending output stream
+//Lo que hace es basicamente buscar el header y saltarselo, asi no
+//corrompe el archivo
+//https://stackoverflow.com/questions/1194656/appending-to-an-objectoutputstream
+
+class AnadirObjectOutputStream extends ObjectOutputStream{
+    public AnadirObjectOutputStream(FileOutputStream salida) throws IOException{
+        super(salida);
+    }
+    @Override
+    protected void writeStreamHeader() throws IOException{
+        reset();
     }
 }
