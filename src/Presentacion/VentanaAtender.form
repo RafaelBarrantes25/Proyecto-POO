@@ -32,112 +32,112 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="txtObservaciones" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtNumServicio" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtTipoServicio" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+        <Group type="102" attributes="0">
+          <EmptySpace max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+            <Component id="txtObservaciones" alignment="0" max="32767" attributes="0"/>
+            <Component id="txtNumServicio" alignment="0" max="32767" attributes="0"/>
+            <Component id="txtTipoServicio" alignment="0" max="32767" attributes="0"/>
+            <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+          </Group>
+          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                <Component id="cajaTipoServicio" max="32767" attributes="0"/>
+                <Group type="102" alignment="0" attributes="0">
+                  <Component id="cajaNumServicio" min="-2" pref="128" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txtPlaca" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="espacioPlaca" min="-2" pref="128" max="-2" attributes="0"/>
+                </Group>
+                <Component id="cajaMecanicos" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cajaTipoServicio" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="cajaNumServicio" min="-2" pref="128" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtPlaca" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="espacioPlaca" min="-2" pref="128" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="cajaMecanicos" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtEstado" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cajaEstado" min="-2" pref="256" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jTextField1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+              <Component id="txtEstado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="cajaEstado" min="-2" pref="256" max="-2" attributes="0"/>
+            </Group>
+            <Component id="jTextField1" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnSalvar" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnCancelar" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+          <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+        </Group>
+        <Group type="102" alignment="1" attributes="0">
+          <EmptySpace max="32767" attributes="0"/>
+          <Component id="btnSalvar" min="-2" pref="100" max="-2" attributes="0"/>
+          <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Component id="btnCancelar" min="-2" pref="100" max="-2" attributes="0"/>
+          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+        </Group>
+        <Group type="102" attributes="0">
+          <EmptySpace max="-2" attributes="0"/>
+          <Component id="txtOtrosServicios" min="-2" max="-2" attributes="0"/>
+          <EmptySpace max="32767" attributes="0"/>
+        </Group>
+        <Group type="102" alignment="0" attributes="0">
+          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+          <Component id="panelOtrosServicios" min="-2" max="-2" attributes="0"/>
+          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="1" attributes="0">
+            <Component id="btnMas" min="-2" pref="64" max="-2" attributes="0"/>
+            <Component id="btnMenos" min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="txtOtrosServicios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-              <Component id="panelOtrosServicios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnMas" min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="btnMenos" min="-2" pref="64" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cajaNumServicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="espacioPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="txtNumServicio" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtTipoServicio" min="-2" max="-2" attributes="0"/>
-                  <Component id="cajaTipoServicio" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cajaMecanicos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cajaEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-              <Component id="txtObservaciones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="256" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtOtrosServicios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="panelOtrosServicios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="82" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnMas" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnMenos" min="-2" pref="64" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+        <Group type="102" alignment="0" attributes="0">
+          <EmptySpace max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="103" groupAlignment="3" attributes="0">
+              <Component id="cajaNumServicio" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="txtPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="espacioPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+            </Group>
+            <Component id="txtNumServicio" min="-2" max="-2" attributes="0"/>
           </Group>
+          <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Component id="txtTipoServicio" min="-2" max="-2" attributes="0"/>
+            <Component id="cajaTipoServicio" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+            <Group type="103" groupAlignment="3" attributes="0">
+              <Component id="cajaMecanicos" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="cajaEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="txtEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+            </Group>
+          </Group>
+          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+          <Component id="txtObservaciones" min="-2" max="-2" attributes="0"/>
+          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+          <Component id="jTextField1" min="-2" pref="256" max="-2" attributes="0"/>
+          <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Component id="txtOtrosServicios" min="-2" max="-2" attributes="0"/>
+          <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Group type="103" groupAlignment="0" attributes="0">
+            <Group type="102" alignment="0" attributes="0">
+              <Component id="panelOtrosServicios" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                <Component id="btnSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+            </Group>
+            <Group type="102" alignment="0" attributes="0">
+              <Component id="btnMas" min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnMenos" min="-2" pref="64" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+            </Group>
+          </Group>
+          <EmptySpace max="-2" attributes="0"/>
+        </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -324,12 +324,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="512" max="32767" attributes="0"/>
+            <EmptySpace min="0" pref="512" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
+            <EmptySpace min="0" pref="135" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

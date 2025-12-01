@@ -4,14 +4,7 @@
  */
 package Presentacion;
 
-import Conceptos.Cliente;
-import Conceptos.Servicio;
-import Conceptos.Solicitud;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import util.ClienteInput;
-import util.ServicioInput;
-import util.SolicitudOutput;
 
 /**
  * Ventana para realizar una solicitud
@@ -20,8 +13,6 @@ import util.SolicitudOutput;
  */
 public class VentanaSolicitar extends javax.swing.JDialog {
 
-    private ArrayList<String> listaClientes = new ArrayList<>();
-    private ArrayList<String> listaServicios = new ArrayList<>();
     /**
      * Creates new form VentanaSolicitar
      */
@@ -29,7 +20,6 @@ public class VentanaSolicitar extends javax.swing.JDialog {
         super(parent, modal);
         this.setTitle("Crear Solicitud de Servicio");
         initComponents();
-        llenarInicial();
     }
 
     /**
@@ -49,14 +39,14 @@ public class VentanaSolicitar extends javax.swing.JDialog {
         txtCliente = new javax.swing.JLabel();
         txtObservaciones = new javax.swing.JLabel();
         cajaClientes = new javax.swing.JComboBox<>();
+        espacioObservaciones = new javax.swing.JTextField();
         txtServicios = new javax.swing.JLabel();
         cajaServicios = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         comentarioEnInterfazGrafica = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        cajaObservaciones = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1024, 768));
         setMinimumSize(new java.awt.Dimension(1024, 768));
 
         txtPlaca.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -88,6 +78,12 @@ public class VentanaSolicitar extends javax.swing.JDialog {
         cajaClientes.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         cajaClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        espacioObservaciones.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        espacioObservaciones.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        espacioObservaciones.setText("Este espacio está destinado a comentarios entre el mecánico y el cliente");
+        espacioObservaciones.setAlignmentX(0.0F);
+        espacioObservaciones.setAlignmentY(0.0F);
+
         txtServicios.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtServicios.setText("Tipo de Servicio");
 
@@ -103,10 +99,6 @@ public class VentanaSolicitar extends javax.swing.JDialog {
 
         comentarioEnInterfazGrafica.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
         comentarioEnInterfazGrafica.setText("<--- No sé que hace este botón");
-
-        cajaObservaciones.setColumns(20);
-        cajaObservaciones.setRows(5);
-        jScrollPane1.setViewportView(cajaObservaciones);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,24 +121,25 @@ public class VentanaSolicitar extends javax.swing.JDialog {
                             .addComponent(txtCliente))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cajaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtServicios)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cajaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cajaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtServicios)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cajaServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(comentarioEnInterfazGrafica)))
+                                .addGap(112, 112, 112))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(comentarioEnInterfazGrafica)))
-                        .addGap(112, 112, 112)))
+                                .addComponent(espacioObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 94, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,8 +159,8 @@ public class VentanaSolicitar extends javax.swing.JDialog {
                 .addGap(67, 67, 67)
                 .addComponent(txtObservaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(espacioObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnSalvar))
@@ -177,39 +170,6 @@ public class VentanaSolicitar extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llenarInicial(){
-        ServicioInput inputDeServicios = new ServicioInput();
-        ClienteInput inputDeClientes = new ClienteInput();
-        //Por algun motivo, la lista empieza con items del 1 al 4,
-        //se borran al iniciar
-        cajaServicios.removeAllItems();
-        cajaClientes.removeAllItems();
-        Servicio s1;
-        Cliente c1;
-        
-        
-        try{
-            inputDeServicios.abrir();
-            while((s1 = inputDeServicios.leer()) != null){
-                cajaServicios.addItem(s1.getNombre());
-            }
-            inputDeServicios.cerrar();
-            
-            inputDeClientes.abrir();
-            while((c1 = inputDeClientes.leer()) != null){
-                //Aca anado que tambien se extraiga la id, porque sino
-                //despues es un dolor
-                String clienteConId = c1.getNombre() + " ("+c1.getId()+")";
-                cajaClientes.addItem(clienteConId);
-            }
-            inputDeClientes.cerrar();
-            
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        
-    }
-    
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -218,61 +178,10 @@ public class VentanaSolicitar extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    //Como el cliente se le pega el id, esto lo separa
-    //basado en una de las respuestas
-    //https://stackoverflow.com/questions/24256478/pattern-to-extract-text-between-parenthesis
-    private String extraerIdCliente(String clienteConId){
-        
-        String soloLaId = clienteConId.substring(clienteConId.indexOf("(")+1, clienteConId.indexOf(")"));
-        return soloLaId;
-    }
-    
-    
-    private String extraerNombreCliente(String clienteConId){
-        String soloElNombre = clienteConId.substring(0,clienteConId.indexOf("(")-1);
-        return soloElNombre;
-    }
-    
-    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         javax.swing.JOptionPane.showMessageDialog(this, "Su solicitud ha sido ingresada exitosamente,\nNúmero _____" + "", "Número de Servicio", JOptionPane.INFORMATION_MESSAGE);
-        //Se extraen los datos de los campos
-        
-        //Se usa .trim para que no se pongan espacios ni nada extra
-        String placa = espacioPlaca.getText().trim();
-        String cliente = cajaClientes.getSelectedItem().toString();
-        String servicio = cajaServicios.getSelectedItem().toString();
-        String observaciones = cajaObservaciones.getText();
-        
-        String nombreCliente = extraerNombreCliente(cliente);
-        String identificacion = extraerIdCliente(cliente);
-        //Para que no pueda dejar nada vacio
-        if(placa.isEmpty() || observaciones.isEmpty()){
-            JOptionPane.showMessageDialog(this,"No puede dejar campos vacios");
-        }
-        
-        //Hay que crear un objeto solicitud para añadirlo
-        Solicitud solicitudNueva = new Solicitud(placa,nombreCliente,servicio,observaciones,identificacion);
-        
-        SolicitudOutput outputDeSolicitud = new SolicitudOutput();
-        
-        try{
-            outputDeSolicitud.abrir();
-            outputDeSolicitud.escribir(solicitudNueva);
-            outputDeSolicitud.cerrar();
-        
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        
-        
-        
     }//GEN-LAST:event_btnSalvarActionPerformed
-    
-    private void cajaServicios(java.awt.event.ActionEvent evt){
-        
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -319,13 +228,12 @@ public class VentanaSolicitar extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cajaClientes;
-    private javax.swing.JTextArea cajaObservaciones;
     private javax.swing.JComboBox<String> cajaServicios;
     private javax.swing.JLabel comentarioEnInterfazGrafica;
+    private javax.swing.JTextField espacioObservaciones;
     private javax.swing.JTextField espacioPlaca;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtObservaciones;
     private javax.swing.JLabel txtPlaca;

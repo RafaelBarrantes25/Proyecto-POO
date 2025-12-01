@@ -4,7 +4,20 @@
  */
 package Presentacion;
 
+import Conceptos.Cliente;
 import Conceptos.Mecanico;
+import Conceptos.Servicio;
+import Conceptos.Solicitud;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
+import util.ServicioInput;
 
 /**
  * Ventana para atender sobre una solicitud
@@ -12,7 +25,7 @@ import Conceptos.Mecanico;
  * Carné: 2025085826
  */
 public class VentanaAtender extends javax.swing.JDialog {
-
+    ArrayList<Solicitud> listaDeSolicitudes = new ArrayList<>();
     /**
      * Creates new form VentanaAtender
      */
@@ -20,10 +33,126 @@ public class VentanaAtender extends javax.swing.JDialog {
         super(parent, modal);
         this.setTitle("Atender Solicitudes de Servicio");
         initComponents();
+        llenarIniciales();
         
+        //Un action listener para ver el cliente seleccionado
+        cajaCliente.addActionListener(new java.awt.event.ActionListener(){
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e){
+                llenarOtrosDatos();
+            }
+        });
         this.cajaTipoServicio.setEnabled(false);
     }
+    
+   
+    void llenarIniciales(){
+        cargarCheckboxDeServicios();
+        try(ObjectInputStream input = new ObjectInputStream(new FileInputStream("Data/Solicitudes.dat"))){
+            while(true){
+                try{
+                    //Solicitud s1 = (Solicitud) input.readObject();
+                    Cliente c = (Cliente) input.readObject();
+                    cajaCliente.addItem(c.getNombre());
 
+                    //listaDeSolicitudes.add(s1);
+                }catch(EOFException eof){
+                    break;
+                } catch(ClassNotFoundException e){
+                    e.printStackTrace();
+                }
+            
+        
+                }
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            }catch(IOException i){
+                i.printStackTrace();
+            }
+        cajaCliente.removeAllItems();
+        for(Solicitud s2 : listaDeSolicitudes){
+            cajaCliente.addItem(s2.getCliente());
+        }
+        
+        
+    
+        
+        
+        
+        ArrayList<Mecanico> mecanicos = new ArrayList<>();
+        try {
+            //Esto usa el archivo de input para meterlo en la lista de clientes
+            util.MecanicoInput inputDeMecanicos = new util.MecanicoInput();
+            //Abre el archivo
+            inputDeMecanicos.abrir();
+            
+            Mecanico m;
+            while ((m = inputDeMecanicos.leer()) != null) {
+                mecanicos.add(m);
+            }
+
+            inputDeMecanicos.cerrar();
+            cajaMecanicos.removeAllItems();
+            for (Mecanico mec : mecanicos){
+
+                cajaMecanicos.addItem(mec.getNombre());
+
+            }
+    }catch(Exception e){
+        
+    }
+        
+        
+        cajaEstado.removeAllItems();
+        cajaEstado.addItem("Por definir");
+        cajaEstado.addItem("Reparado");
+        cajaEstado.addItem("En proceso");
+    }
+    
+    
+public void cargarCheckboxDeServicios() {
+    panelOtrosServicios.removeAll();
+    panelOtrosServicios.setLayout(new BoxLayout(panelOtrosServicios, BoxLayout.Y_AXIS));
+    ServicioInput input = new ServicioInput();
+    
+    try {
+        input.abrir();
+        Servicio s1;
+
+        while ((s1 = input.leer()) != null) {
+
+            JCheckBox check = new JCheckBox(s1.getNombre());
+
+            panelOtrosServicios.add(check);
+        }
+
+        input.cerrar();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    //recarga el panel
+    panelOtrosServicios.revalidate();
+    panelOtrosServicios.repaint();
+}
+
+    
+    private void llenarOtrosDatos(){
+        String clienteActual = (String) cajaCliente.getSelectedItem();
+        if(clienteActual == null){
+            return;
+        }
+        for(Solicitud s : listaDeSolicitudes){
+            if(s.getCliente().equals(clienteActual)){
+                espacioPlaca.setText(s.getPlaca());
+                
+                cajaTipoServicio.setText(s.getServicio());
+                
+                break;
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,15 +163,13 @@ public class VentanaAtender extends javax.swing.JDialog {
     private void initComponents() {
 
         txtNumServicio = new javax.swing.JLabel();
-        cajaNumServicio = new javax.swing.JComboBox<>();
+        cajaCliente = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         txtTipoServicio = new javax.swing.JLabel();
-        cajaTipoServicio = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         cajaMecanicos = new javax.swing.JComboBox<>();
         txtPlaca = new javax.swing.JLabel();
-        espacioPlaca = new javax.swing.JTextField();
         txtEstado = new javax.swing.JLabel();
         cajaEstado = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
@@ -51,6 +178,9 @@ public class VentanaAtender extends javax.swing.JDialog {
         panelOtrosServicios = new javax.swing.JPanel();
         btnMas = new javax.swing.JButton();
         btnMenos = new javax.swing.JButton();
+        cajaTipoServicio = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        espacioPlaca = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1024, 768));
@@ -59,10 +189,10 @@ public class VentanaAtender extends javax.swing.JDialog {
 
         txtNumServicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtNumServicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        txtNumServicio.setText("Número de Servicio:");
+        txtNumServicio.setText("Cliente:");
 
-        cajaNumServicio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        cajaNumServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cajaCliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        cajaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCancelar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -79,9 +209,6 @@ public class VentanaAtender extends javax.swing.JDialog {
         txtTipoServicio.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         txtTipoServicio.setText("Tipo de Servicio:");
 
-        cajaTipoServicio.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        cajaTipoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel1.setText("Mecánico:");
@@ -92,14 +219,6 @@ public class VentanaAtender extends javax.swing.JDialog {
         txtPlaca.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtPlaca.setText("Placa:");
 
-        espacioPlaca.setEditable(false);
-        espacioPlaca.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        espacioPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                espacioPlacaActionPerformed(evt);
-            }
-        });
-
         txtEstado.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtEstado.setText("Estado:");
 
@@ -108,6 +227,11 @@ public class VentanaAtender extends javax.swing.JDialog {
 
         jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField1.setText("Este espacio está destinado a comentarios entre el mecánico y el cliente");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         txtObservaciones.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtObservaciones.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -156,24 +280,35 @@ public class VentanaAtender extends javax.swing.JDialog {
                     .addComponent(txtNumServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtTipoServicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cajaTipoServicio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(cajaNumServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(cajaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPlaca)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(42, 42, 42)
+                                                .addComponent(jLabel2))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(espacioPlaca)))
+                                        .addGap(0, 115, Short.MAX_VALUE))
+                                    .addComponent(cajaMecanicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPlaca)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cajaMecanicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cajaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField1))
-                .addGap(233, 233, 233))
+                                .addComponent(txtEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cajaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1))
+                        .addGap(233, 233, 233))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(cajaTipoServicio)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,15 +334,16 @@ public class VentanaAtender extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cajaNumServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cajaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtPlaca)
-                        .addComponent(espacioPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2)
+                        .addComponent(espacioPlaca))
                     .addComponent(txtNumServicio))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTipoServicio)
-                    .addComponent(cajaTipoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(cajaTipoServicio))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,10 +379,6 @@ public class VentanaAtender extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void espacioPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espacioPlacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_espacioPlacaActionPerformed
-
     private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMasActionPerformed
@@ -254,6 +386,10 @@ public class VentanaAtender extends javax.swing.JDialog {
     private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMenosActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,12 +438,13 @@ public class VentanaAtender extends javax.swing.JDialog {
     private javax.swing.JButton btnMas;
     private javax.swing.JButton btnMenos;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cajaCliente;
     private javax.swing.JComboBox<String> cajaEstado;
     private javax.swing.JComboBox<String> cajaMecanicos;
-    private javax.swing.JComboBox<String> cajaNumServicio;
-    private javax.swing.JComboBox<String> cajaTipoServicio;
-    private javax.swing.JTextField espacioPlaca;
+    private javax.swing.JLabel cajaTipoServicio;
+    private javax.swing.JLabel espacioPlaca;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelOtrosServicios;
     private javax.swing.JLabel txtEstado;
